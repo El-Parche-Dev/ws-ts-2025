@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>CSS Filters y Blend Modes - WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="filters-effects.css" />
+  </head>
+  <body>
+    <!-- Timer de Sección -->
+    <div class="timer-container">
+      <div class="timer-section">
+        <h3>⏱️ Gestión de Tiempo MVP</h3>
+        <div class="phase-timers">
+          <div class="timer core-timer">
+            <span class="phase-name">CORE</span>
+            <span
+              class="time"
+              id="core-time"
+              >20:00</span
+            >
+            <button onclick="startTimer('core', 20)">▶️</button>
+          </div>
+          <div class="timer enhanced-timer">
+            <span class="phase-name">ENHANCED</span>
+            <span
+              class="time"
+              id="enhanced-time"
+              >35:00</span
+            >
+            <button onclick="startTimer('enhanced', 35)">▶️</button>
+          </div>
+          <div class="timer polish-timer">
+            <span class="phase-name">POLISH</span>
+            <span
+              class="time"
+              id="polish-time"
+              >20:00</span
+            >
+            <button onclick="startTimer('polish', 20)">▶️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <h1>🎨 CSS Filters y Blend Modes</h1>
+        <p class="subtitle">Efectos visuales profesionales y modos de mezcla</p>
+      </div>
+    </header>
+
+    <!-- Navegación de Fases -->
+    <nav class="phase-nav">
+      <button
+        class="phase-btn active"
+        onclick="showPhase('core')">
+        🔧 CORE (20min)
+      </button>
+      <button
+        class="phase-btn"
+        onclick="showPhase('enhanced')">
+        ⚡ ENHANCED (35min)
+      </button>
+      <button
+        class="phase-btn"
+        onclick="showPhase('polish')">
+        ✨ POLISH (20min)
+      </button>
+    </nav>
+
+    <!-- FASE CORE: Filtros Básicos -->
+    <section
+      id="core-phase"
+      class="phase-section active">
+      <div class="container">
+        <div class="phase-header">
+          <h2>🔧 FASE CORE - Filtros Básicos (20 minutos)</h2>
+          <p>Implementar filtros CSS fundamentales y blend modes básicos</p>
+        </div>
+
+        <!-- Ejercicio 1: Filtros CSS Básicos -->
+        <div class="exercise-card">
+          <h3>Ejercicio 1: Filtros CSS Fundamentales</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="filter-demo filter-blur">
+                <img
+                  src="https://picsum.photos/250/200?random=20"
+                  alt="Blur effect" />
+                <div class="filter-label">Blur</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="filter-demo filter-brightness">
+                <img
+                  src="https://picsum.photos/250/200?random=21"
+                  alt="Brightness effect" />
+                <div class="filter-label">Brightness</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="filter-demo filter-contrast">
+                <img
+                  src="https://picsum.photos/250/200?random=22"
+                  alt="Contrast effect" />
+                <div class="filter-label">Contrast</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="filter-demo filter-grayscale">
+                <img
+                  src="https://picsum.photos/250/200?random=23"
+                  alt="Grayscale effect" />
+                <div class="filter-label">Grayscale</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejercicio 2: Blend Modes Básicos -->
+        <div class="exercise-card">
+          <h3>Ejercicio 2: Modos de Mezcla Fundamentales</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="blend-demo blend-multiply">
+                <img
+                  src="https://picsum.photos/250/200?random=24"
+                  alt="Multiply blend" />
+                <div class="overlay-color"></div>
+                <div class="filter-label">Multiply</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="blend-demo blend-screen">
+                <img
+                  src="https://picsum.photos/250/200?random=25"
+                  alt="Screen blend" />
+                <div class="overlay-color"></div>
+                <div class="filter-label">Screen</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="blend-demo blend-overlay">
+                <img
+                  src="https://picsum.photos/250/200?random=26"
+                  alt="Overlay blend" />
+                <div class="overlay-color"></div>
+                <div class="filter-label">Overlay</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="blend-demo blend-color-dodge">
+                <img
+                  src="https://picsum.photos/250/200?random=27"
+                  alt="Color dodge blend" />
+                <div class="overlay-color"></div>
+                <div class="filter-label">Color Dodge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist CORE -->
+        <div class="checklist-card">
+          <h3>✅ Checklist FASE CORE</h3>
+          <div class="checklist">
+            <label
+              ><input type="checkbox" /> Filtros básicos implementados</label
+            >
+            <label
+              ><input type="checkbox" /> Blur, brightness, contrast
+              funcionando</label
+            >
+            <label
+              ><input type="checkbox" /> Blend modes básicos aplicados</label
+            >
+            <label
+              ><input type="checkbox" /> Transiciones suaves en hover</label
+            >
+            <label><input type="checkbox" /> Efectos visuales inmediatos</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FASE ENHANCED: Efectos Avanzados -->
+    <section
+      id="enhanced-phase"
+      class="phase-section">
+      <div class="container">
+        <div class="phase-header">
+          <h2>⚡ FASE ENHANCED - Efectos Avanzados (35 minutos)</h2>
+          <p>Combinaciones de filtros y blend modes complejos</p>
+        </div>
+
+        <!-- Ejercicio 3: Filtros Combinados -->
+        <div class="exercise-card">
+          <h3>Ejercicio 3: Combinaciones de Filtros Avanzadas</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="filter-demo filter-vintage">
+                <img
+                  src="https://picsum.photos/300/200?random=28"
+                  alt="Vintage effect" />
+                <div class="filter-label">Vintage</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="filter-demo filter-neon">
+                <img
+                  src="https://picsum.photos/300/200?random=29"
+                  alt="Neon effect" />
+                <div class="filter-label">Neon Glow</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="filter-demo filter-polaroid">
+                <img
+                  src="https://picsum.photos/300/200?random=30"
+                  alt="Polaroid effect" />
+                <div class="filter-label">Polaroid</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejercicio 4: Blend Modes Interactivos -->
+        <div class="exercise-card">
+          <h3>Ejercicio 4: Blend Modes con Interactividad</h3>
+          <div class="blend-showcase">
+            <div class="interactive-blend">
+              <img
+                src="https://picsum.photos/400/300?random=31"
+                alt="Interactive blend" />
+              <div class="blend-overlay"></div>
+              <div class="blend-controls">
+                <button onclick="changeBlendMode('multiply')">Multiply</button>
+                <button onclick="changeBlendMode('screen')">Screen</button>
+                <button onclick="changeBlendMode('overlay')">Overlay</button>
+                <button onclick="changeBlendMode('difference')">
+                  Difference
+                </button>
+                <button onclick="changeBlendMode('luminosity')">
+                  Luminosity
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejercicio 5: Animaciones de Filtros -->
+        <div class="exercise-card">
+          <h3>Ejercicio 5: Filtros Animados</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="filter-demo filter-animated-hue">
+                <img
+                  src="https://picsum.photos/250/200?random=32"
+                  alt="Animated hue" />
+                <div class="filter-label">Hue Rotation</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="filter-demo filter-animated-saturate">
+                <img
+                  src="https://picsum.photos/250/200?random=33"
+                  alt="Animated saturation" />
+                <div class="filter-label">Saturation Wave</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist ENHANCED -->
+        <div class="checklist-card">
+          <h3>⚡ Checklist FASE ENHANCED</h3>
+          <div class="checklist">
+            <label
+              ><input type="checkbox" /> Filtros combinados implementados</label
+            >
+            <label
+              ><input type="checkbox" /> Efectos vintage/neon funcionando</label
+            >
+            <label><input type="checkbox" /> Blend modes interactivos</label>
+            <label
+              ><input type="checkbox" /> Animaciones de filtros fluidas</label
+            >
+            <label
+              ><input type="checkbox" /> Controles dinámicos operativos</label
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FASE POLISH: Optimización y Creatividad -->
+    <section
+      id="polish-phase"
+      class="phase-section">
+      <div class="container">
+        <div class="phase-header">
+          <h2>✨ FASE POLISH - Optimización y Creatividad (20 minutos)</h2>
+          <p>Performance, fallbacks y efectos creativos avanzados</p>
+        </div>
+
+        <!-- Ejercicio 6: Performance y Fallbacks -->
+        <div class="exercise-card">
+          <h3>Ejercicio 6: Optimización y Compatibilidad</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="filter-demo filter-optimized">
+                <img
+                  src="https://picsum.photos/250/200?random=34"
+                  alt="Optimized filters" />
+                <div class="filter-label">Optimizado</div>
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="filter-demo filter-fallback">
+                <img
+                  src="https://picsum.photos/250/200?random=35"
+                  alt="Fallback effects" />
+                <div class="filter-label">Con Fallback</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejercicio 7: Efectos Creativos -->
+        <div class="exercise-card">
+          <h3>Ejercicio 7: Efectos Creativos Avanzados</h3>
+          <div class="creative-gallery">
+            <div class="creative-item filter-glitch">
+              <img
+                src="https://picsum.photos/300/200?random=36"
+                alt="Glitch effect" />
+              <div class="filter-label">Glitch Effect</div>
+            </div>
+            <div class="creative-item filter-hologram">
+              <img
+                src="https://picsum.photos/300/200?random=37"
+                alt="Hologram effect" />
+              <div class="filter-label">Hologram</div>
+            </div>
+            <div class="creative-item filter-duotone">
+              <img
+                src="https://picsum.photos/300/200?random=38"
+                alt="Duotone effect" />
+              <div class="filter-label">Duotone</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist POLISH -->
+        <div class="checklist-card">
+          <h3>✨ Checklist FASE POLISH</h3>
+          <div class="checklist">
+            <label
+              ><input type="checkbox" /> Optimizaciones de performance</label
+            >
+            <label><input type="checkbox" /> Fallbacks implementados</label>
+            <label
+              ><input type="checkbox" /> Efectos creativos funcionando</label
+            >
+            <label><input type="checkbox" /> Compatible con navegadores</label>
+            <label
+              ><input type="checkbox" /> Microinteracciones refinadas</label
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <p>🎯 <strong>Próximo:</strong> 07-microinteracciones-loading</p>
+        <p>
+          ⏱️ <strong>Tiempo Total:</strong> 75 minutos | 🏆
+          <strong>Meta:</strong> Dominar filters y blend modes CSS
+        </p>
+      </div>
+    </footer>
+
+    <script src="../05-css-clipping-masking/timer.js"></script>
+    <script src="filters-interactions.js"></script>
+  </body>
+</html>

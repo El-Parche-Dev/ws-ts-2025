@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>API Consumer | WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+  </head>
+  <body>
+    <!-- 🎯 FASE CORE ✅ (30 min): Estructura básica funcional -->
+    <div class="container">
+      <!-- Header Principal -->
+      <header class="header">
+        <h1>📡 API Consumer App</h1>
+        <p>Proyecto integrador - JavaScript ES6+ & APIs</p>
+        <div class="phase-indicator">
+          <span class="phase active">Core</span>
+          <span class="phase">Enhanced</span>
+          <span class="phase">Polish</span>
+        </div>
+      </header>
+
+      <!-- ⚡ FASE ENHANCED (30 min): Controles y filtros -->
+      <section class="controls">
+        <div class="search-filter">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Buscar posts por título..."
+            class="search-input" />
+
+          <select
+            id="userFilter"
+            class="user-filter">
+            <option value="">👥 Todos los usuarios</option>
+          </select>
+
+          <button
+            id="refreshBtn"
+            class="refresh-btn">
+            🔄 Actualizar
+          </button>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="stats">
+          <div class="stat-card">
+            <span
+              class="stat-number"
+              id="totalPosts"
+              >0</span
+            >
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="stat-card">
+            <span
+              class="stat-number"
+              id="totalUsers"
+              >0</span
+            >
+            <span class="stat-label">Usuarios</span>
+          </div>
+          <div class="stat-card">
+            <span
+              class="stat-number"
+              id="filteredPosts"
+              >0</span
+            >
+            <span class="stat-label">Filtrados</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✨ FASE POLISH (15 min): Loading states -->
+      <div
+        id="loadingState"
+        class="loading-state">
+        <div class="spinner"></div>
+        <p>Cargando posts increíbles...</p>
+      </div>
+
+      <!-- Error State -->
+      <div
+        id="errorState"
+        class="error-state hidden">
+        <div class="error-icon">⚠️</div>
+        <h3>¡Oops! Algo salió mal</h3>
+        <p id="errorMessage">Error al cargar los datos</p>
+        <button
+          id="retryBtn"
+          class="retry-btn">
+          🔄 Intentar de nuevo
+        </button>
+      </div>
+
+      <!-- Contenido Principal -->
+      <main class="main-content">
+        <!-- User Info Panel -->
+        <aside
+          id="userPanel"
+          class="user-panel hidden">
+          <div class="user-card">
+            <div class="user-avatar">👤</div>
+            <div class="user-info">
+              <h3 id="userName"></h3>
+              <p id="userEmail"></p>
+              <p id="userWebsite"></p>
+            </div>
+            <button
+              id="closeUserPanel"
+              class="close-btn">
+              ✖️
+            </button>
+          </div>
+        </aside>
+
+        <!-- Posts Grid -->
+        <section class="posts-container">
+          <div
+            id="postsGrid"
+            class="posts-grid">
+            <!-- Posts se generan dinámicamente -->
+          </div>
+
+          <!-- Paginación -->
+          <div
+            id="pagination"
+            class="pagination hidden">
+            <button
+              id="prevBtn"
+              class="page-btn">
+              ← Anterior
+            </button>
+            <span
+              id="pageInfo"
+              class="page-info">
+              Página 1 de 1
+            </span>
+            <button
+              id="nextBtn"
+              class="page-btn">
+              Siguiente →
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <!-- Modal para Post Details -->
+      <div
+        id="postModal"
+        class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="modalTitle">Título del Post</h2>
+            <button
+              id="closeModal"
+              class="close-btn">
+              ✖️
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="post-meta">
+              <span
+                id="modalAuthor"
+                class="author">
+                Por: Usuario
+              </span>
+              <span
+                id="modalDate"
+                class="date">
+                Fecha
+              </span>
+            </div>
+            <p
+              id="modalBody"
+              class="post-content">
+              Contenido del post...
+            </p>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+              <h3>💬 Comentarios</h3>
+              <div
+                id="commentsContainer"
+                class="comments-container">
+                <!-- Comentarios se cargan dinámicamente -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard de Desarrollo -->
+    <div
+      id="devDashboard"
+      class="dev-dashboard">
+      <h4>🛠️ Dashboard MVP</h4>
+      <div class="phase-progress">
+        <div class="progress-item">
+          <span>✅ Core:</span>
+          <span id="coreStatus">Pendiente</span>
+        </div>
+        <div class="progress-item">
+          <span>⚡ Enhanced:</span>
+          <span id="enhancedStatus">Pendiente</span>
+        </div>
+        <div class="progress-item">
+          <span>✨ Polish:</span>
+          <span id="polishStatus">Pendiente</span>
+        </div>
+      </div>
+      <div class="api-status">
+        <span>📡 API Status:</span>
+        <span
+          id="apiStatus"
+          class="status-indicator">
+          Verificando...
+        </span>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

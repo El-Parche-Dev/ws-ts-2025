@@ -1,0 +1,413 @@
+/* ========================================
+   CSS CLIPPING Y MASKING - EFECTOS ESPECÍFICOS
+   WorldSkills 2025 - Implementación MVP
+   ======================================== */
+
+/* ========== FASE CORE ✅ (25 minutos) ========== */
+/* Funcionalidad: Formas básicas con clip-path y máscaras simples */
+
+/* === Formas Básicas con Clip-path === */
+
+.circle-clip {
+  width: 200px;
+  height: 200px;
+  clip-path: circle(50%);
+  transition: clip-path 0.3s ease;
+}
+
+.circle-clip:hover {
+  clip-path: circle(60%);
+}
+
+.ellipse-clip {
+  width: 250px;
+  height: 150px;
+  clip-path: ellipse(40% 50%);
+  transition: clip-path 0.3s ease;
+}
+
+.ellipse-clip:hover {
+  clip-path: ellipse(50% 60%);
+}
+
+.triangle-clip {
+  width: 200px;
+  height: 200px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transition: clip-path 0.3s ease;
+}
+
+.triangle-clip:hover {
+  clip-path: polygon(50% 10%, 10% 90%, 90% 90%);
+}
+
+.hexagon-clip {
+  width: 200px;
+  height: 200px;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+  transition: clip-path 0.3s ease;
+}
+
+.hexagon-clip:hover {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* === Máscaras CSS Básicas === */
+
+.mask-fade {
+  width: 300px;
+  height: 200px;
+  mask: linear-gradient(
+    to right,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+  transition: mask-position 0.3s ease;
+}
+
+.mask-fade:hover {
+  mask: linear-gradient(
+    to right,
+    transparent 10%,
+    black 30%,
+    black 70%,
+    transparent 90%
+  );
+}
+
+.mask-circle {
+  width: 300px;
+  height: 200px;
+  mask: radial-gradient(circle at center, black 40%, transparent 60%);
+  transition: mask-size 0.3s ease;
+  mask-size: 100% 100%;
+}
+
+.mask-circle:hover {
+  mask-size: 120% 120%;
+}
+
+/* ========== FASE ENHANCED ⚡ (30 minutos) ========== */
+/* Mejoras: Animaciones complejas y máscaras avanzadas */
+
+/* === Animaciones de Clip-path === */
+
+.animated-reveal {
+  width: 300px;
+  height: 200px;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  animation: revelar 3s ease-in-out infinite;
+}
+
+@keyframes revelar {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+}
+
+.animated-morph {
+  width: 200px;
+  height: 200px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: morphing 4s ease-in-out infinite;
+}
+
+.animated-morph .color-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #ffeaa7
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 2s ease infinite;
+}
+
+@keyframes morphing {
+  0% {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  25% {
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  }
+  50% {
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 50%);
+  }
+  100% {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === Máscaras con Gradientes === */
+
+.mask-gradient {
+  width: 300px;
+  height: 200px;
+  mask: linear-gradient(
+    45deg,
+    transparent 0%,
+    black 25%,
+    transparent 50%,
+    black 75%,
+    transparent 100%
+  );
+  mask-size: 200% 200%;
+  animation: mask-move 3s ease-in-out infinite;
+}
+
+@keyframes mask-move {
+  0% {
+    mask-position: 0% 0%;
+  }
+  50% {
+    mask-position: 100% 100%;
+  }
+  100% {
+    mask-position: 0% 0%;
+  }
+}
+
+.mask-pattern {
+  width: 300px;
+  height: 200px;
+  mask: radial-gradient(circle at 20% 20%, black 20%, transparent 21%),
+    radial-gradient(circle at 80% 20%, black 20%, transparent 21%),
+    radial-gradient(circle at 20% 80%, black 20%, transparent 21%),
+    radial-gradient(circle at 80% 80%, black 20%, transparent 21%),
+    radial-gradient(circle at 50% 50%, black 30%, transparent 31%);
+  transition: mask-size 0.5s ease;
+  mask-size: 50px 50px;
+}
+
+.mask-pattern:hover {
+  mask-size: 80px 80px;
+}
+
+/* ========== FASE POLISH ✨ (20 minutos) ========== */
+/* Optimizaciones: Fallbacks, performance y microinteracciones */
+
+/* === Fallbacks para Navegadores === */
+
+.fallback-shape {
+  width: 200px;
+  height: 200px;
+  clip-path: circle(50%);
+  /* Fallback para navegadores sin soporte de clip-path */
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Fallback usando @supports */
+@supports not (clip-path: circle(50%)) {
+  .fallback-shape {
+    clip-path: none;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .triangle-clip {
+    clip-path: none;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 200px solid #3498db;
+    background: none;
+  }
+
+  .triangle-clip img {
+    display: none;
+  }
+}
+
+/* === Optimizaciones de Performance === */
+
+.optimized-clip {
+  width: 200px;
+  height: 200px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  /* Usar transform en lugar de clip-path para animaciones mejores */
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.optimized-clip:hover {
+  transform: scale(1.1);
+}
+
+/* === Microinteracciones Sofisticadas === */
+
+.micro-interaction {
+  width: 250px;
+  height: 200px;
+  position: relative;
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
+}
+
+.micro-interaction:hover {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 0%,
+    100% 50%,
+    100% 100%,
+    100% 100%,
+    0% 100%
+  );
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.micro-interaction .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  font-weight: 600;
+}
+
+.micro-interaction:hover .overlay {
+  opacity: 1;
+}
+
+/* === Responsive Clipping === */
+
+.responsive-clip {
+  width: 250px;
+  height: 200px;
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 85%);
+  transition: clip-path 0.3s ease;
+}
+
+.responsive-clip:hover {
+  clip-path: polygon(15% 0%, 100% 15%, 100% 100%, 0% 100%);
+}
+
+/* === Accesibilidad === */
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .animated-reveal,
+  .animated-morph,
+  .mask-gradient {
+    animation: none;
+  }
+
+  .circle-clip:hover,
+  .ellipse-clip:hover,
+  .triangle-clip:hover,
+  .hexagon-clip:hover,
+  .mask-fade:hover,
+  .mask-circle:hover,
+  .mask-pattern:hover,
+  .optimized-clip:hover,
+  .micro-interaction:hover,
+  .responsive-clip:hover {
+    transform: none;
+    clip-path: inherit;
+    mask-size: inherit;
+  }
+}
+
+/* === Responsive Design === */
+
+@media (max-width: 768px) {
+  .circle-clip,
+  .ellipse-clip,
+  .triangle-clip,
+  .hexagon-clip,
+  .fallback-shape,
+  .optimized-clip {
+    width: 150px;
+    height: 150px;
+  }
+
+  .mask-fade,
+  .mask-circle,
+  .animated-reveal,
+  .mask-gradient,
+  .mask-pattern {
+    width: 250px;
+    height: 150px;
+  }
+
+  .micro-interaction,
+  .responsive-clip {
+    width: 200px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .circle-clip,
+  .ellipse-clip,
+  .triangle-clip,
+  .hexagon-clip,
+  .fallback-shape,
+  .optimized-clip {
+    width: 120px;
+    height: 120px;
+  }
+
+  .mask-fade,
+  .mask-circle,
+  .animated-reveal,
+  .mask-gradient,
+  .mask-pattern {
+    width: 200px;
+    height: 120px;
+  }
+
+  .micro-interaction,
+  .responsive-clip {
+    width: 180px;
+    height: 120px;
+  }
+}

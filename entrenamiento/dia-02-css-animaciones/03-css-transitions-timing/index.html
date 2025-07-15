@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>CSS Transitions y Timing | WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="transitions.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>CSS Transitions y Timing</h1>
+      <p>Dominando transiciones suaves y timing functions</p>
+    </header>
+
+    <main class="container">
+      <!-- FASE CORE: Transitions Básicas -->
+      <section class="demo-section">
+        <h2>🔧 FASE CORE - Transitions Básicas</h2>
+
+        <div class="transitions-grid">
+          <div class="transition-demo">
+            <div class="transition-box basic-hover">
+              <p>Hover básico</p>
+            </div>
+          </div>
+
+          <div class="transition-demo">
+            <div class="transition-box color-transition">
+              <p>Color transition</p>
+            </div>
+          </div>
+
+          <div class="transition-demo">
+            <div class="transition-box size-transition">
+              <p>Size transition</p>
+            </div>
+          </div>
+
+          <div class="transition-demo">
+            <div class="transition-box opacity-transition">
+              <p>Opacity transition</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE ENHANCED: Timing Functions -->
+      <section class="demo-section">
+        <h2>⚡ FASE ENHANCED - Timing Functions Avanzadas</h2>
+
+        <div class="timing-functions">
+          <div class="timing-demo">
+            <h3>Easing Functions</h3>
+            <div class="timing-grid">
+              <div class="timing-box ease-linear">Linear</div>
+              <div class="timing-box ease-ease">Ease</div>
+              <div class="timing-box ease-in">Ease-in</div>
+              <div class="timing-box ease-out">Ease-out</div>
+              <div class="timing-box ease-in-out">Ease-in-out</div>
+              <div class="timing-box ease-custom">Custom</div>
+            </div>
+          </div>
+
+          <div class="chained-transitions">
+            <h3>Transiciones Encadenadas</h3>
+            <div class="chain-container">
+              <div class="chain-item chain-1">1</div>
+              <div class="chain-item chain-2">2</div>
+              <div class="chain-item chain-3">3</div>
+              <div class="chain-item chain-4">4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE POLISH: Efectos Complejos -->
+      <section class="demo-section">
+        <h2>✨ FASE POLISH - Efectos Complejos</h2>
+
+        <div class="polish-transitions">
+          <div class="advanced-card">
+            <div class="card-content">
+              <h3>Advanced Card</h3>
+              <p>Hover para ver efecto complejo</p>
+              <div class="card-overlay">
+                <p>Contenido revelado</p>
+                <button class="btn-reveal">Acción</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="morphing-button">
+            <span class="btn-text">Hover me</span>
+            <span class="btn-icon">→</span>
+          </div>
+
+          <div class="progress-indicator">
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="progress-steps">
+              <div class="step active">1</div>
+              <div class="step">2</div>
+              <div class="step">3</div>
+              <div class="step">4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejercicio Práctico -->
+      <section class="demo-section exercise">
+        <h2>🎯 Ejercicio Práctico MVP (30 minutos)</h2>
+
+        <div class="exercise-tasks">
+          <div class="task-group">
+            <h3>CORE (12 min)</h3>
+            <ul>
+              <li>✅ Transition básica de hover</li>
+              <li>✅ Color y background transition</li>
+              <li>✅ Scale transition smooth</li>
+              <li>✅ Opacity fade effect</li>
+            </ul>
+          </div>
+
+          <div class="task-group">
+            <h3>ENHANCED (10 min)</h3>
+            <ul>
+              <li>⚡ Custom cubic-bezier</li>
+              <li>⚡ Multiple property transition</li>
+              <li>⚡ Delayed transitions</li>
+              <li>⚡ Transition timing control</li>
+            </ul>
+          </div>
+
+          <div class="task-group">
+            <h3>POLISH (8 min)</h3>
+            <ul>
+              <li>✨ Complex card reveal</li>
+              <li>✨ Morphing button</li>
+              <li>✨ Progress animation</li>
+              <li>✨ Performance optimization</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exercise-workspace">
+          <h3>Tu espacio de trabajo:</h3>
+          <div class="workspace-area">
+            <!-- Área para que el estudiante implemente -->
+            <div class="student-example">Implementa aquí tus transitions</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>WorldSkills 2025 - CSS Transitions Training</p>
+      <p>Tiempo restante: <span id="timer">30:00</span></p>
+    </footer>
+
+    <script>
+      // Timer específico para esta sección (30 minutos)
+      let totalTime = 30 * 60;
+      let currentTime = totalTime;
+
+      function updateTimer() {
+        const minutes = Math.floor(currentTime / 60);
+        const seconds = currentTime % 60;
+        const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds
+          .toString()
+          .padStart(2, '0')}`;
+
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+          timerElement.textContent = formattedTime;
+
+          if (currentTime <= 300) {
+            timerElement.style.color = '#e74c3c';
+          } else if (currentTime <= 600) {
+            timerElement.style.color = '#f39c12';
+          }
+        }
+
+        if (currentTime > 0) {
+          currentTime--;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        updateTimer();
+        setInterval(updateTimer, 1000);
+      });
+    </script>
+  </body>
+</html>

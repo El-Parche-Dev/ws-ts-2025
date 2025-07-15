@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>CSS Clipping y Masking - WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="clipping-effects.css" />
+  </head>
+  <body>
+    <!-- Timer de Sección -->
+    <div class="timer-container">
+      <div class="timer-section">
+        <h3>⏱️ Gestión de Tiempo MVP</h3>
+        <div class="phase-timers">
+          <div class="timer core-timer">
+            <span class="phase-name">CORE</span>
+            <span
+              class="time"
+              id="core-time"
+              >25:00</span
+            >
+            <button onclick="startTimer('core', 25)">▶️</button>
+          </div>
+          <div class="timer enhanced-timer">
+            <span class="phase-name">ENHANCED</span>
+            <span
+              class="time"
+              id="enhanced-time"
+              >30:00</span
+            >
+            <button onclick="startTimer('enhanced', 30)">▶️</button>
+          </div>
+          <div class="timer polish-timer">
+            <span class="phase-name">POLISH</span>
+            <span
+              class="time"
+              id="polish-time"
+              >20:00</span
+            >
+            <button onclick="startTimer('polish', 20)">▶️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <h1>🎨 CSS Clipping y Masking</h1>
+        <p class="subtitle">Técnicas avanzadas de recorte y enmascarado</p>
+      </div>
+    </header>
+
+    <!-- Navegación de Fases -->
+    <nav class="phase-nav">
+      <button
+        class="phase-btn active"
+        onclick="showPhase('core')">
+        🔧 CORE (25min)
+      </button>
+      <button
+        class="phase-btn"
+        onclick="showPhase('enhanced')">
+        ⚡ ENHANCED (30min)
+      </button>
+      <button
+        class="phase-btn"
+        onclick="showPhase('polish')">
+        ✨ POLISH (20min)
+      </button>
+    </nav>
+
+    <!-- FASE CORE: Clipping Básico -->
+    <section
+      id="core-phase"
+      class="phase-section active">
+      <div class="container">
+        <div class="phase-header">
+          <h2>🔧 FASE CORE - Clipping Básico (25 minutos)</h2>
+          <p>Implementar formas básicas con clip-path y máscaras simples</p>
+        </div>
+
+        <!-- Ejercicio 1: Formas Básicas -->
+        <div class="exercise-card">
+          <h3>Ejercicio 1: Formas Geométricas Básicas</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="shape circle-clip">
+                <img
+                  src="https://picsum.photos/200/200?random=1"
+                  alt="Círculo" />
+              </div>
+              <p>Círculo</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape ellipse-clip">
+                <img
+                  src="https://picsum.photos/200/200?random=2"
+                  alt="Elipse" />
+              </div>
+              <p>Elipse</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape triangle-clip">
+                <img
+                  src="https://picsum.photos/200/200?random=3"
+                  alt="Triángulo" />
+              </div>
+              <p>Triángulo</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape hexagon-clip">
+                <img
+                  src="https://picsum.photos/200/200?random=4"
+                  alt="Hexágono" />
+              </div>
+              <p>Hexágono</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejercicio 2: Máscaras Básicas -->
+        <div class="exercise-card">
+          <h3>Ejercicio 2: Máscaras CSS Básicas</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="shape mask-fade">
+                <img
+                  src="https://picsum.photos/300/200?random=5"
+                  alt="Fade mask" />
+              </div>
+              <p>Máscara Fade</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape mask-circle">
+                <img
+                  src="https://picsum.photos/300/200?random=6"
+                  alt="Circle mask" />
+              </div>
+              <p>Máscara Circular</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist CORE -->
+        <div class="checklist-card">
+          <h3>✅ Checklist FASE CORE</h3>
+          <div class="checklist">
+            <label
+              ><input type="checkbox" /> clip-path básico implementado</label
+            >
+            <label
+              ><input type="checkbox" /> Formas geométricas funcionando</label
+            >
+            <label><input type="checkbox" /> Máscaras básicas aplicadas</label>
+            <label
+              ><input type="checkbox" /> Transiciones simples en hover</label
+            >
+            <label><input type="checkbox" /> Resultado visual inmediato</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FASE ENHANCED: Efectos Avanzados -->
+    <section
+      id="enhanced-phase"
+      class="phase-section">
+      <div class="container">
+        <div class="phase-header">
+          <h2>⚡ FASE ENHANCED - Efectos Avanzados (30 minutos)</h2>
+          <p>Animaciones de clipping path y máscaras complejas</p>
+        </div>
+
+        <!-- Ejercicio 3: Clipping Animado -->
+        <div class="exercise-card">
+          <h3>Ejercicio 3: Animaciones de Clip-path</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="shape animated-reveal">
+                <img
+                  src="https://picsum.photos/300/200?random=7"
+                  alt="Reveal animation" />
+              </div>
+              <p>Reveal Animation</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape animated-morph">
+                <div class="color-bg"></div>
+              </div>
+              <p>Shape Morphing</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejercicio 4: Máscaras Complejas -->
+        <div class="exercise-card">
+          <h3>Ejercicio 4: Máscaras con Gradientes</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="shape mask-gradient">
+                <img
+                  src="https://picsum.photos/300/200?random=8"
+                  alt="Gradient mask" />
+              </div>
+              <p>Máscara Gradiente</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape mask-pattern">
+                <img
+                  src="https://picsum.photos/300/200?random=9"
+                  alt="Pattern mask" />
+              </div>
+              <p>Máscara Patrón</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist ENHANCED -->
+        <div class="checklist-card">
+          <h3>⚡ Checklist FASE ENHANCED</h3>
+          <div class="checklist">
+            <label
+              ><input type="checkbox" /> Animaciones de clip-path fluidas</label
+            >
+            <label><input type="checkbox" /> Máscaras con gradientes</label>
+            <label><input type="checkbox" /> Múltiples capas de masking</label>
+            <label><input type="checkbox" /> Interactividad avanzada</label>
+            <label><input type="checkbox" /> Efectos reveal funcionando</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FASE POLISH: Optimización y Refinamiento -->
+    <section
+      id="polish-phase"
+      class="phase-section">
+      <div class="container">
+        <div class="phase-header">
+          <h2>✨ FASE POLISH - Optimización y Refinamiento (20 minutos)</h2>
+          <p>Fallbacks, performance y microinteracciones sofisticadas</p>
+        </div>
+
+        <!-- Ejercicio 5: Fallbacks y Optimización -->
+        <div class="exercise-card">
+          <h3>Ejercicio 5: Fallbacks y Performance</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="shape fallback-shape">
+                <img
+                  src="https://picsum.photos/200/200?random=10"
+                  alt="Fallback example" />
+              </div>
+              <p>Con Fallback CSS</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape optimized-clip">
+                <img
+                  src="https://picsum.photos/200/200?random=11"
+                  alt="Optimized clip" />
+              </div>
+              <p>Optimizado</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ejercicio 6: Microinteracciones -->
+        <div class="exercise-card">
+          <h3>Ejercicio 6: Microinteracciones Avanzadas</h3>
+          <div class="demo-grid">
+            <div class="demo-item">
+              <div class="shape micro-interaction">
+                <img
+                  src="https://picsum.photos/250/200?random=12"
+                  alt="Micro interaction" />
+                <div class="overlay">Hover me!</div>
+              </div>
+              <p>Hover Sofisticado</p>
+            </div>
+            <div class="demo-item">
+              <div class="shape responsive-clip">
+                <img
+                  src="https://picsum.photos/250/200?random=13"
+                  alt="Responsive clip" />
+              </div>
+              <p>Responsive Clipping</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist POLISH -->
+        <div class="checklist-card">
+          <h3>✨ Checklist FASE POLISH</h3>
+          <div class="checklist">
+            <label><input type="checkbox" /> Fallbacks implementados</label>
+            <label
+              ><input type="checkbox" /> Optimizaciones de rendimiento</label
+            >
+            <label
+              ><input type="checkbox" /> Responsive design verificado</label
+            >
+            <label><input type="checkbox" /> Accesibilidad implementada</label>
+            <label
+              ><input type="checkbox" /> Microinteracciones refinadas</label
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <p>🎯 <strong>Próximo:</strong> 06-css-filters-blend-modes</p>
+        <p>
+          ⏱️ <strong>Tiempo Total:</strong> 75 minutos | 🏆
+          <strong>Meta:</strong> Dominar clipping y masking CSS
+        </p>
+      </div>
+    </footer>
+
+    <script src="timer.js"></script>
+    <script src="clipping-interactions.js"></script>
+  </body>
+</html>

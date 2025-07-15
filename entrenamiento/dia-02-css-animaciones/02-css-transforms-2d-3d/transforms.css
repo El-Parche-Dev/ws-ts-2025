@@ -1,0 +1,565 @@
+/* 🔄 CSS TRANSFORMS 2D/3D - WorldSkills 2025
+   Archivo de transformaciones organizadas por fases MVP */
+
+/* ==========================================
+   🔧 FASE CORE - Transforms Básicos 2D
+   ========================================== */
+
+/* 1. TRANSLATE TRANSFORMS */
+.translate-demo .box {
+  transform: translateX(0);
+}
+
+.translate-demo:hover .box {
+  transform: translateX(30px) translateY(-20px);
+}
+
+/* 2. ROTATE TRANSFORMS */
+.rotate-demo .box {
+  transform: rotate(0deg);
+}
+
+.rotate-demo:hover .box {
+  transform: rotate(45deg);
+}
+
+/* 3. SCALE TRANSFORMS */
+.scale-demo .box {
+  transform: scale(1);
+}
+
+.scale-demo:hover .box {
+  transform: scale(1.3);
+}
+
+/* 4. SKEW TRANSFORMS */
+.skew-demo .box {
+  transform: skew(0deg);
+}
+
+.skew-demo:hover .box {
+  transform: skewX(20deg) skewY(5deg);
+}
+
+/* 5. CARD FLIP BÁSICO */
+.card-container {
+  perspective: 1000px;
+  width: 200px;
+  height: 300px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow-medium);
+}
+
+.card-front {
+  background: linear-gradient(
+    135deg,
+    var(--color-primario),
+    var(--color-secundario)
+  );
+  color: white;
+}
+
+.card-back {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent),
+    var(--color-warning)
+  );
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* ==========================================
+   ⚡ FASE ENHANCED - Efectos 3D Avanzados
+   ========================================== */
+
+/* 1. CUBO 3D INTERACTIVO */
+.cube-container {
+  perspective: 1000px;
+  width: 150px;
+  height: 150px;
+  margin: 50px auto;
+}
+
+.cube {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform-style: preserve-3d;
+  animation: rotateCube 20s infinite linear;
+  will-change: transform;
+}
+
+.cube:hover {
+  animation-play-state: paused;
+}
+
+.cube-face {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cube-face.front {
+  background: var(--color-primario);
+  transform: rotateY(0deg) translateZ(75px);
+}
+
+.cube-face.back {
+  background: var(--color-accent);
+  transform: rotateY(180deg) translateZ(75px);
+}
+
+.cube-face.right {
+  background: var(--color-secundario);
+  transform: rotateY(90deg) translateZ(75px);
+}
+
+.cube-face.left {
+  background: var(--color-warning);
+  transform: rotateY(-90deg) translateZ(75px);
+}
+
+.cube-face.top {
+  background: var(--color-purple);
+  transform: rotateX(90deg) translateZ(75px);
+}
+
+.cube-face.bottom {
+  background: var(--color-orange);
+  transform: rotateX(-90deg) translateZ(75px);
+}
+
+@keyframes rotateCube {
+  0% {
+    transform: rotateX(0) rotateY(0);
+  }
+  25% {
+    transform: rotateX(90deg) rotateY(90deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+  75% {
+    transform: rotateX(270deg) rotateY(270deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+/* 2. PIRÁMIDE 3D */
+.pyramid-container {
+  perspective: 1000px;
+  width: 150px;
+  height: 150px;
+  margin: 50px auto;
+}
+
+.pyramid {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform-style: preserve-3d;
+  animation: rotatePyramid 15s infinite linear;
+}
+
+.pyramid-face {
+  position: absolute;
+  background: linear-gradient(
+    135deg,
+    var(--color-primario),
+    var(--color-secundario)
+  );
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.pyramid-face.base {
+  width: 150px;
+  height: 150px;
+  transform: rotateX(90deg) translateZ(-75px);
+}
+
+.pyramid-face.side1 {
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-bottom: 130px solid var(--color-primario);
+  transform: rotateY(0deg) rotateX(30deg) translateZ(43px);
+}
+
+.pyramid-face.side2 {
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-bottom: 130px solid var(--color-secundario);
+  transform: rotateY(90deg) rotateX(30deg) translateZ(43px);
+}
+
+.pyramid-face.side3 {
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-bottom: 130px solid var(--color-accent);
+  transform: rotateY(180deg) rotateX(30deg) translateZ(43px);
+}
+
+.pyramid-face.side4 {
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-bottom: 130px solid var(--color-warning);
+  transform: rotateY(270deg) rotateX(30deg) translateZ(43px);
+}
+
+@keyframes rotatePyramid {
+  from {
+    transform: rotateY(0deg) rotateX(15deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(15deg);
+  }
+}
+
+/* 3. ESFERA 3D (ILUSIÓN) */
+.sphere-container {
+  perspective: 500px;
+  width: 150px;
+  height: 150px;
+  margin: 50px auto;
+}
+
+.sphere {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform-style: preserve-3d;
+  animation: rotateSphere 10s infinite linear;
+}
+
+.sphere-layer {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--color-primario);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.sphere-layer:nth-child(1) {
+  transform: rotateY(0deg);
+}
+
+.sphere-layer:nth-child(2) {
+  transform: rotateY(36deg);
+}
+
+.sphere-layer:nth-child(3) {
+  transform: rotateY(72deg);
+}
+
+.sphere-layer:nth-child(4) {
+  transform: rotateY(108deg);
+}
+
+.sphere-layer:nth-child(5) {
+  transform: rotateY(144deg);
+}
+
+@keyframes rotateSphere {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* ==========================================
+   ✨ FASE POLISH - Efectos Complejos
+   ========================================== */
+
+/* 1. PARALLAX 3D */
+.parallax-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  perspective: 100px;
+  border-radius: var(--border-radius);
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-back {
+  transform: translateZ(-50px) scale(1.5);
+  background: linear-gradient(
+    45deg,
+    var(--color-primario),
+    var(--color-purple)
+  );
+}
+
+.parallax-base {
+  transform: translateZ(0);
+  background: linear-gradient(
+    45deg,
+    var(--color-secundario),
+    var(--color-warning)
+  );
+}
+
+.parallax-front {
+  transform: translateZ(50px) scale(0.5);
+  background: linear-gradient(45deg, var(--color-accent), var(--color-orange));
+}
+
+.parallax-element {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.parallax-container:hover .parallax-back {
+  transform: translateZ(-50px) scale(1.5) translateX(20px);
+}
+
+.parallax-container:hover .parallax-base {
+  transform: translateZ(0) translateX(-10px);
+}
+
+.parallax-container:hover .parallax-front {
+  transform: translateZ(50px) scale(0.5) translateX(30px);
+}
+
+/* 2. MORPHING SHAPES */
+.morphing-container {
+  width: 150px;
+  height: 150px;
+  margin: 50px auto;
+  perspective: 500px;
+}
+
+.morphing-shape {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(
+    45deg,
+    var(--color-primario),
+    var(--color-accent)
+  );
+  animation: morphShape 8s infinite ease-in-out;
+  will-change: transform, border-radius;
+}
+
+@keyframes morphShape {
+  0% {
+    border-radius: 50%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 0% 50% 50% 50%;
+    transform: rotate(90deg) scale(1.2);
+  }
+  50% {
+    border-radius: 0%;
+    transform: rotate(180deg) scale(0.8);
+  }
+  75% {
+    border-radius: 50% 0% 50% 50%;
+    transform: rotate(270deg) scale(1.1);
+  }
+  100% {
+    border-radius: 50%;
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* 3. CAROUSEL 3D */
+.carousel-3d-container {
+  perspective: 1000px;
+  width: 200px;
+  height: 200px;
+  margin: 50px auto;
+}
+
+.carousel-3d {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: rotateCarousel 12s infinite linear;
+}
+
+.carousel-item {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--color-primario);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+}
+
+.carousel-item.item-1 {
+  transform: rotateY(0deg) translateZ(120px);
+  background: var(--color-primario);
+}
+
+.carousel-item.item-2 {
+  transform: rotateY(60deg) translateZ(120px);
+  background: var(--color-secundario);
+}
+
+.carousel-item.item-3 {
+  transform: rotateY(120deg) translateZ(120px);
+  background: var(--color-accent);
+}
+
+.carousel-item.item-4 {
+  transform: rotateY(180deg) translateZ(120px);
+  background: var(--color-warning);
+}
+
+.carousel-item.item-5 {
+  transform: rotateY(240deg) translateZ(120px);
+  background: var(--color-purple);
+}
+
+.carousel-item.item-6 {
+  transform: rotateY(300deg) translateZ(120px);
+  background: var(--color-orange);
+}
+
+@keyframes rotateCarousel {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.carousel-3d:hover {
+  animation-play-state: paused;
+}
+
+/* ==========================================
+   🎯 PERFORMANCE OPTIMIZATIONS
+   ========================================== */
+
+/* Hardware acceleration for smooth transforms */
+.cube,
+.pyramid,
+.sphere,
+.morphing-shape,
+.carousel-3d,
+.card {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Responsive transforms */
+@media (max-width: 768px) {
+  .cube-container,
+  .pyramid-container,
+  .sphere-container,
+  .morphing-container,
+  .carousel-3d-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cube,
+  .pyramid,
+  .sphere,
+  .morphing-shape,
+  .carousel-3d {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cube-face {
+    width: 120px;
+    height: 120px;
+    font-size: 2rem;
+  }
+
+  .card-container {
+    width: 160px;
+    height: 240px;
+  }
+}
+
+/* Accessibility: Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .cube,
+  .pyramid,
+  .sphere,
+  .morphing-shape,
+  .carousel-3d {
+    animation: none;
+  }
+
+  .parallax-layer {
+    transform: none !important;
+  }
+}

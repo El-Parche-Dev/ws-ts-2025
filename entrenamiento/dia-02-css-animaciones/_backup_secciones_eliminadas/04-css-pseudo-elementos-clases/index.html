@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>CSS Pseudo-elementos y Pseudo-clases | WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="pseudo-effects.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>CSS Pseudo-elementos y Pseudo-clases</h1>
+      <p>Efectos creativos sin HTML adicional</p>
+    </header>
+
+    <main class="container">
+      <!-- FASE CORE: Pseudo-elementos Básicos -->
+      <section class="demo-section">
+        <h2>🔧 FASE CORE - Pseudo-elementos Básicos</h2>
+
+        <div class="pseudo-grid">
+          <div class="pseudo-demo">
+            <div class="tooltip-demo">Hover para tooltip</div>
+          </div>
+
+          <div class="pseudo-demo">
+            <div class="before-after-demo">Decorado con ::before/::after</div>
+          </div>
+
+          <div class="pseudo-demo">
+            <div class="quote-demo">
+              "Este texto tiene comillas automáticas"
+            </div>
+          </div>
+
+          <div class="pseudo-demo">
+            <div class="arrow-demo">Botón con flecha CSS</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE ENHANCED: Pseudo-clases Avanzadas -->
+      <section class="demo-section">
+        <h2>⚡ FASE ENHANCED - Pseudo-clases Avanzadas</h2>
+
+        <div class="enhanced-pseudo">
+          <div class="nth-child-demo">
+            <h3>nth-child Patterns</h3>
+            <div class="grid-items">
+              <div class="grid-item">1</div>
+              <div class="grid-item">2</div>
+              <div class="grid-item">3</div>
+              <div class="grid-item">4</div>
+              <div class="grid-item">5</div>
+              <div class="grid-item">6</div>
+              <div class="grid-item">7</div>
+              <div class="grid-item">8</div>
+              <div class="grid-item">9</div>
+            </div>
+          </div>
+
+          <div class="not-selector-demo">
+            <h3>:not() Selector</h3>
+            <div class="button-group">
+              <button class="btn">Normal</button>
+              <button class="btn special">Special</button>
+              <button class="btn">Normal</button>
+              <button class="btn">Normal</button>
+            </div>
+          </div>
+
+          <div class="focus-within-demo">
+            <h3>:focus-within Effect</h3>
+            <form class="focus-form">
+              <div class="form-group">
+                <label>Nombre:</label>
+                <input
+                  type="text"
+                  placeholder="Tu nombre" />
+              </div>
+              <div class="form-group">
+                <label>Email:</label>
+                <input
+                  type="email"
+                  placeholder="tu@email.com" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE POLISH: Efectos Creativos Complejos -->
+      <section class="demo-section">
+        <h2>✨ FASE POLISH - Efectos Creativos Complejos</h2>
+
+        <div class="polish-pseudo">
+          <div class="creative-card">
+            <div class="card-title">Creative Card</div>
+            <div class="card-content">
+              Hover para ver efectos con pseudo-elementos
+            </div>
+          </div>
+
+          <div class="morphing-loader">
+            <div class="loader-text">Loading</div>
+          </div>
+
+          <div class="gradient-border-demo">Gradient Border Effect</div>
+
+          <div class="text-effects-demo">
+            <div
+              class="glitch-text"
+              data-text="GLITCH">
+              GLITCH
+            </div>
+            <div class="neon-text">NEON</div>
+            <div class="typewriter-text">Typing effect...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lista de técnicas -->
+      <section class="demo-section">
+        <h2>🎯 Técnicas Demostradas</h2>
+
+        <div class="techniques-grid">
+          <div class="technique-card">
+            <h3>::before & ::after</h3>
+            <ul>
+              <li>Decoraciones automáticas</li>
+              <li>Iconos CSS puro</li>
+              <li>Overlays y máscaras</li>
+              <li>Formas geométricas</li>
+            </ul>
+          </div>
+
+          <div class="technique-card">
+            <h3>Pseudo-clases</h3>
+            <ul>
+              <li>:hover, :focus, :active</li>
+              <li>:nth-child() patterns</li>
+              <li>:not() exclusions</li>
+              <li>:focus-within forms</li>
+            </ul>
+          </div>
+
+          <div class="technique-card">
+            <h3>Efectos Avanzados</h3>
+            <ul>
+              <li>Gradient borders</li>
+              <li>Text effects</li>
+              <li>Loading animations</li>
+              <li>Morphing shapes</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejercicio Práctico -->
+      <section class="demo-section exercise">
+        <h2>🎯 Ejercicio Práctico MVP (30 minutos)</h2>
+
+        <div class="exercise-checklist">
+          <div class="phase-group">
+            <h3>CORE (12 min)</h3>
+            <label><input type="checkbox" /> Tooltip con ::before</label>
+            <label><input type="checkbox" /> Decoración ::after</label>
+            <label><input type="checkbox" /> :hover effects</label>
+            <label><input type="checkbox" /> Button con arrow</label>
+          </div>
+
+          <div class="phase-group">
+            <h3>ENHANCED (10 min)</h3>
+            <label><input type="checkbox" /> :nth-child styling</label>
+            <label><input type="checkbox" /> :not() selector</label>
+            <label><input type="checkbox" /> :focus-within form</label>
+            <label><input type="checkbox" /> Complex selectors</label>
+          </div>
+
+          <div class="phase-group">
+            <h3>POLISH (8 min)</h3>
+            <label><input type="checkbox" /> Gradient border</label>
+            <label><input type="checkbox" /> Text effects</label>
+            <label><input type="checkbox" /> Creative animations</label>
+            <label><input type="checkbox" /> Advanced pseudo-elements</label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>WorldSkills 2025 - CSS Pseudo-elementos Training</p>
+      <p>Tiempo restante: <span id="timer">30:00</span></p>
+    </footer>
+
+    <script>
+      // Timer para esta sección
+      let totalTime = 30 * 60;
+      let currentTime = totalTime;
+
+      function updateTimer() {
+        const minutes = Math.floor(currentTime / 60);
+        const seconds = currentTime % 60;
+        const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds
+          .toString()
+          .padStart(2, '0')}`;
+
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+          timerElement.textContent = formattedTime;
+
+          if (currentTime <= 300) {
+            timerElement.style.color = '#e74c3c';
+          } else if (currentTime <= 600) {
+            timerElement.style.color = '#f39c12';
+          }
+        }
+
+        if (currentTime > 0) {
+          currentTime--;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        updateTimer();
+        setInterval(updateTimer, 1000);
+      });
+    </script>
+  </body>
+</html>

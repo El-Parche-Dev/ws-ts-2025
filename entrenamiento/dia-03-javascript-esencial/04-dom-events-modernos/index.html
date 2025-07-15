@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>DOM Events Modernos - WorldSkills 2025</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        background: #2c3e50;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .timer {
+        background: #e74c3c;
+        padding: 8px 15px;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        padding: 25px;
+        border: 2px solid #ecf0f1;
+        border-radius: 10px;
+        background: #f8f9fa;
+      }
+
+      .phase-core {
+        border-color: #3498db;
+      }
+      .phase-enhanced {
+        border-color: #f39c12;
+      }
+      .phase-polish {
+        border-color: #27ae60;
+      }
+
+      .phase-indicator {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+      }
+
+      .core {
+        background: #3498db;
+        color: white;
+      }
+      .enhanced {
+        background: #f39c12;
+        color: white;
+      }
+      .polish {
+        background: #27ae60;
+        color: white;
+      }
+
+      h2 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        border-left: 4px solid #3498db;
+        padding-left: 15px;
+      }
+
+      .demo-area {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 15px 0;
+        border: 1px solid #ddd;
+      }
+
+      .btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+      }
+
+      .btn-danger {
+        background: #e74c3c;
+      }
+      .btn-danger:hover {
+        background: #c0392b;
+      }
+
+      .btn-success {
+        background: #27ae60;
+      }
+      .btn-success:hover {
+        background: #219a52;
+      }
+
+      .draggable {
+        width: 100px;
+        height: 100px;
+        background: #3498db;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        border-radius: 8px;
+        cursor: move;
+        user-select: none;
+      }
+
+      .drop-zone {
+        min-height: 150px;
+        border: 3px dashed #bdc3c7;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        color: #7f8c8d;
+        margin: 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      .drop-zone.dragover {
+        border-color: #3498db;
+        background: #ecf0f1;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: #3498db;
+        outline: none;
+      }
+
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        transform: translateX(300px);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      .notification.success {
+        background: #27ae60;
+      }
+      .notification.error {
+        background: #e74c3c;
+      }
+      .notification.info {
+        background: #3498db;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+
+      .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        min-width: 300px;
+        text-align: center;
+      }
+
+      .log {
+        background: #2c3e50;
+        color: #2ecc71;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        max-height: 200px;
+        overflow-y: auto;
+        margin: 15px 0;
+      }
+
+      .checklist {
+        background: #ecf0f1;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .checklist h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+
+      .checklist ul {
+        list-style: none;
+      }
+
+      .checklist li {
+        padding: 8px 0;
+        border-bottom: 1px solid #bdc3c7;
+      }
+
+      .checklist li:last-child {
+        border-bottom: none;
+      }
+
+      .checklist input[type='checkbox'] {
+        margin-right: 10px;
+        transform: scale(1.2);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+          border-radius: 10px;
+        }
+
+        .content {
+          padding: 20px;
+        }
+
+        .header {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🎯 DOM Events Modernos - WorldSkills 2025</h1>
+        <div
+          class="timer"
+          id="timer">
+          Tiempo: 75:00
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- FASE CORE -->
+        <div class="section phase-core">
+          <span class="phase-indicator core">Fase Core ✅ (25 min)</span>
+          <h2>Event Listeners Modernos</h2>
+
+          <div class="demo-area">
+            <h3>Delegación de Eventos</h3>
+            <div id="task-list">
+              <button class="btn add-task">Agregar Tarea</button>
+              <ul id="tasks"></ul>
+            </div>
+          </div>
+
+          <div class="demo-area">
+            <h3>Eventos de Formulario</h3>
+            <form id="user-form">
+              <div class="form-group">
+                <label for="username">Usuario:</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required />
+              </div>
+              <button
+                type="submit"
+                class="btn">
+                Enviar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="reset-form">
+                Limpiar
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- FASE ENHANCED -->
+        <div class="section phase-enhanced">
+          <span class="phase-indicator enhanced"
+            >Fase Enhanced ⚡ (30 min)</span
+          >
+          <h2>Eventos Avanzados y APIs Modernas</h2>
+
+          <div class="demo-area">
+            <h3>Drag & Drop API</h3>
+            <div
+              class="draggable"
+              draggable="true"
+              id="drag-item">
+              Arrástrrame
+            </div>
+            <div
+              class="drop-zone"
+              id="drop-zone">
+              Suelta aquí
+            </div>
+          </div>
+
+          <div class="demo-area">
+            <h3>Intersection Observer</h3>
+            <button
+              class="btn"
+              id="toggle-observer">
+              Activar Observer
+            </button>
+            <div
+              style="
+                height: 200px;
+                overflow-y: scroll;
+                border: 1px solid #ddd;
+                padding: 10px;
+              "
+              id="scroll-container">
+              <div
+                style="
+                  height: 100px;
+                  background: #ecf0f1;
+                  margin: 10px 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                Elemento 1
+              </div>
+              <div
+                style="
+                  height: 100px;
+                  background: #ecf0f1;
+                  margin: 10px 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                class="observe-me">
+                Elemento Observado
+              </div>
+              <div
+                style="
+                  height: 100px;
+                  background: #ecf0f1;
+                  margin: 10px 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                Elemento 3
+              </div>
+              <div
+                style="
+                  height: 100px;
+                  background: #ecf0f1;
+                  margin: 10px 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                Elemento 4
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-area">
+            <h3>Custom Events</h3>
+            <button
+              class="btn"
+              id="trigger-custom">
+              Disparar Evento Custom
+            </button>
+            <button
+              class="btn btn-success"
+              id="listen-custom">
+              Escuchar Eventos
+            </button>
+          </div>
+        </div>
+
+        <!-- FASE POLISH -->
+        <div class="section phase-polish">
+          <span class="phase-indicator polish">Fase Polish ✨ (20 min)</span>
+          <h2>Performance y Optimización</h2>
+
+          <div class="demo-area">
+            <h3>Debounce y Throttle</h3>
+            <div class="form-group">
+              <label for="search-input">Búsqueda con Debounce:</label>
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Escribe para buscar..." />
+            </div>
+            <button
+              class="btn"
+              id="throttle-btn">
+              Botón con Throttle
+            </button>
+          </div>
+
+          <div class="demo-area">
+            <h3>Event Performance Monitor</h3>
+            <button
+              class="btn"
+              id="performance-test">
+              Test de Performance
+            </button>
+            <div id="performance-results"></div>
+          </div>
+        </div>
+
+        <!-- LOG DE EVENTOS -->
+        <div class="demo-area">
+          <h3>📊 Log de Eventos</h3>
+          <button
+            class="btn btn-danger"
+            id="clear-log">
+            Limpiar Log
+          </button>
+          <div
+            class="log"
+            id="event-log"></div>
+        </div>
+
+        <!-- CHECKLIST DE VALIDACIÓN -->
+        <div class="checklist">
+          <h3>✅ Checklist de Validación</h3>
+          <ul>
+            <li>
+              <input
+                type="checkbox"
+                id="check1" />
+              Event delegation funcionando correctamente
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="check2" />
+              Formularios con validación y preventDefault
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="check3" />
+              Drag & Drop implementado
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="check4" />
+              Intersection Observer detectando elementos
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="check5" />
+              Custom events disparando y escuchando
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="check6" />
+              Debounce/Throttle optimizando performance
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL -->
+    <div
+      class="modal"
+      id="modal">
+      <div class="modal-content">
+        <h3>Evento Detectado</h3>
+        <p id="modal-message">Mensaje del evento</p>
+        <button
+          class="btn"
+          id="close-modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+
+    <!-- NOTIFICACIONES -->
+    <div
+      class="notification"
+      id="notification"></div>
+
+    <script src="events.js"></script>
+  </body>
+</html>

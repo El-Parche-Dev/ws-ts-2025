@@ -1,0 +1,30 @@
+{
+  "name": "dia7-backend-setup",
+  "version": "1.0.0",
+  "description": "Backend Express para Día 7 - Full-Stack Setup WorldSkills 2025",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "test": "echo \"Tests not implemented yet\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "backend",
+    "worldskills",
+    "fullstack",
+    "api"
+  ],
+  "author": "WorldSkills Training Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

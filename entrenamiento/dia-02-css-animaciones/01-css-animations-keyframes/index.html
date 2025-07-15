@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animations y Keyframes | WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="animations.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1 class="fade-in">CSS Animations Showcase</h1>
+      <p class="slide-in-left">Dominando @keyframes para WorldSkills</p>
+    </header>
+
+    <main class="container">
+      <!-- FASE CORE: Animaciones Básicas -->
+      <section class="demo-section">
+        <h2>🔧 FASE CORE - Animaciones Básicas</h2>
+
+        <div class="demo-grid">
+          <div class="demo-card">
+            <div class="bounce-element"></div>
+            <p>Bounce Animation</p>
+          </div>
+
+          <div class="demo-card">
+            <div class="spinner"></div>
+            <p>Loading Spinner</p>
+          </div>
+
+          <div class="demo-card fade-in">
+            <div class="pulse-element"></div>
+            <p>Pulse Effect</p>
+          </div>
+
+          <div class="demo-card slide-in-up">
+            <div class="scale-element"></div>
+            <p>Scale Animation</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE ENHANCED: Animaciones Avanzadas -->
+      <section class="demo-section">
+        <h2>⚡ FASE ENHANCED - Animaciones Avanzadas</h2>
+
+        <div class="stagger-container">
+          <div class="stagger-item stagger-1">Item 1</div>
+          <div class="stagger-item stagger-2">Item 2</div>
+          <div class="stagger-item stagger-3">Item 3</div>
+          <div class="stagger-item stagger-4">Item 4</div>
+          <div class="stagger-item stagger-5">Item 5</div>
+        </div>
+
+        <div class="complex-animation-demo">
+          <div class="typing-text">Texto escribiéndose automáticamente...</div>
+
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                style="--progress: 75%"></div>
+            </div>
+            <span class="progress-text">Progreso: 75%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE POLISH: Efectos Complejos -->
+      <section class="demo-section">
+        <h2>✨ FASE POLISH - Efectos Complejos</h2>
+
+        <div class="polish-demo">
+          <div class="morph-element"></div>
+
+          <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
+
+          <div class="wave-loader">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+
+          <div class="ripple-container">
+            <div class="ripple"></div>
+            <div class="ripple"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejercicio Práctico -->
+      <section class="demo-section exercise">
+        <h2>🎯 Ejercicio Práctico</h2>
+        <p>Implementa las siguientes animaciones en orden MVP:</p>
+
+        <div class="exercise-checklist">
+          <div class="checklist-group">
+            <h3>CORE (18 min)</h3>
+            <label
+              ><input type="checkbox" /> Bounce animation funcionando</label
+            >
+            <label
+              ><input type="checkbox" /> Spinner con rotación infinita</label
+            >
+            <label><input type="checkbox" /> Fade-in básico</label>
+            <label><input type="checkbox" /> Scale animation simple</label>
+          </div>
+
+          <div class="checklist-group">
+            <h3>ENHANCED (16 min)</h3>
+            <label><input type="checkbox" /> Staggered animations</label>
+            <label><input type="checkbox" /> Custom timing functions</label>
+            <label><input type="checkbox" /> Progress bar animada</label>
+            <label><input type="checkbox" /> Typing effect</label>
+          </div>
+
+          <div class="checklist-group">
+            <h3>POLISH (11 min)</h3>
+            <label><input type="checkbox" /> Morph animation</label>
+            <label><input type="checkbox" /> Floating particles</label>
+            <label><input type="checkbox" /> Wave loader</label>
+            <label><input type="checkbox" /> Ripple effects</label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>WorldSkills 2025 - CSS Animations Training</p>
+      <p>Tiempo restante: <span id="timer">45:00</span></p>
+    </footer>
+
+    <script src="timer.js"></script>
+  </body>
+</html>

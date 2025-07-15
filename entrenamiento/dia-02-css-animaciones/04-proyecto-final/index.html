@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto Final - Card Animada | WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="animations.css" />
+  </head>
+  <body>
+    <!-- ========== FASE CORE ✅ (15 min) ========== -->
+    <!-- Estructura HTML básica funcional -->
+
+    <main class="container">
+      <header class="hero">
+        <h1 class="hero__title">Producto Destacado</h1>
+        <p class="hero__subtitle">Descubre nuestra selección premium</p>
+      </header>
+
+      <section class="product-showcase">
+        <article
+          class="product-card"
+          id="productCard">
+          <div class="card__image-container">
+            <img
+              src="https://via.placeholder.com/300x200/4A90E2/ffffff?text=Producto+Premium"
+              alt="Producto Premium"
+              class="card__image"
+              loading="lazy" />
+            <div class="card__badge">Nuevo</div>
+          </div>
+
+          <div class="card__content">
+            <header class="card__header">
+              <h2 class="card__title">iPhone 15 Pro Max</h2>
+              <div class="card__rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">(4.8)</span>
+              </div>
+            </header>
+
+            <p class="card__description">
+              El smartphone más avanzado con chip A17 Pro, cámaras profesionales
+              y diseño de titanio.
+            </p>
+
+            <div class="card__pricing">
+              <span class="price price--original">$1,299</span>
+              <span class="price price--current">$1,199</span>
+              <span class="price__discount">-8%</span>
+            </div>
+
+            <div class="card__features">
+              <span class="feature">📱 128GB</span>
+              <span class="feature">📸 48MP</span>
+              <span class="feature">🔋 29h</span>
+            </div>
+          </div>
+
+          <footer class="card__actions">
+            <button
+              class="btn btn--primary"
+              type="button">
+              Agregar al Carrito
+            </button>
+            <button
+              class="btn btn--secondary"
+              type="button">
+              ❤️ Favoritos
+            </button>
+          </footer>
+        </article>
+      </section>
+
+      <!-- ========== FASE ENHANCED ⚡ (20 min) ========== -->
+      <!-- Elementos adicionales para animaciones -->
+
+      <section class="features-grid">
+        <div class="feature-item">
+          <div class="feature__icon">🚚</div>
+          <h3>Envío Gratis</h3>
+          <p>En compras mayores a $100</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature__icon">🔐</div>
+          <h3>Compra Segura</h3>
+          <p>Certificado SSL</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature__icon">↩️</div>
+          <h3>Devoluciones</h3>
+          <p>30 días sin preguntas</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== FASE POLISH ✨ (10 min) ========== -->
+    <!-- JavaScript opcional para interacciones -->
+
+    <script>
+      // Timer para mostrar tiempo de desarrollo (solo para demo)
+      const startTime = Date.now();
+
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('🎯 Proyecto Final Día 2 - Card Animada');
+        console.log('⏱️ Tiempo objetivo: 45 minutos');
+
+        // Agregar interactividad básica
+        const card = document.getElementById('productCard');
+        const buttons = document.querySelectorAll('.btn');
+
+        buttons.forEach(button => {
+          button.addEventListener('click', function () {
+            console.log('Botón clickeado:', this.textContent);
+
+            // Efecto de click
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              this.style.transform = '';
+            }, 150);
+          });
+        });
+
+        // Log de tiempo transcurrido
+        setTimeout(() => {
+          const elapsed = Math.round((Date.now() - startTime) / 1000);
+          console.log(`⏱️ Tiempo transcurrido: ${elapsed} segundos`);
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

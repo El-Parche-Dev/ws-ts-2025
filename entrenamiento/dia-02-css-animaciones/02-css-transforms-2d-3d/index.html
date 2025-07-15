@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>CSS Transforms 2D/3D | WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="transforms.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>CSS Transforms 2D/3D</h1>
+      <p>Dominando transformaciones para efectos visuales impactantes</p>
+    </header>
+
+    <main class="container">
+      <!-- FASE CORE: Transforms Básicos -->
+      <section class="demo-section">
+        <h2>🔧 FASE CORE - Transforms Básicos 2D</h2>
+
+        <div class="transforms-grid">
+          <div class="transform-demo">
+            <div class="transform-box translate-demo">
+              <div class="box">Translate</div>
+            </div>
+            <p>translateX(), translateY()</p>
+          </div>
+
+          <div class="transform-demo">
+            <div class="transform-box rotate-demo">
+              <div class="box">Rotate</div>
+            </div>
+            <p>rotate()</p>
+          </div>
+
+          <div class="transform-demo">
+            <div class="transform-box scale-demo">
+              <div class="box">Scale</div>
+            </div>
+            <p>scale()</p>
+          </div>
+
+          <div class="transform-demo">
+            <div class="transform-box skew-demo">
+              <div class="box">Skew</div>
+            </div>
+            <p>skewX(), skewY()</p>
+          </div>
+        </div>
+
+        <div class="card-flip-section">
+          <h3>Card Flip Básico</h3>
+          <div class="card-container">
+            <div class="card">
+              <div class="card-front">
+                <h4>Frente</h4>
+                <p>Hover para voltear</p>
+              </div>
+              <div class="card-back">
+                <h4>Atrás</h4>
+                <p>¡Funciona!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE ENHANCED: Efectos 3D -->
+      <section class="demo-section">
+        <h2>⚡ FASE ENHANCED - Efectos 3D Avanzados</h2>
+
+        <div class="enhanced-demos">
+          <div class="cube-demo">
+            <h3>Cubo 3D Interactivo</h3>
+            <div class="cube-container">
+              <div class="cube">
+                <div class="cube-face front">1</div>
+                <div class="cube-face back">2</div>
+                <div class="cube-face right">3</div>
+                <div class="cube-face left">4</div>
+                <div class="cube-face top">5</div>
+                <div class="cube-face bottom">6</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pyramid-demo">
+            <h3>Pirámide 3D</h3>
+            <div class="pyramid-container">
+              <div class="pyramid">
+                <div class="pyramid-face base"></div>
+                <div class="pyramid-face side1"></div>
+                <div class="pyramid-face side2"></div>
+                <div class="pyramid-face side3"></div>
+                <div class="pyramid-face side4"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sphere-demo">
+            <h3>Esfera 3D (Ilusión)</h3>
+            <div class="sphere-container">
+              <div class="sphere">
+                <div class="sphere-layer"></div>
+                <div class="sphere-layer"></div>
+                <div class="sphere-layer"></div>
+                <div class="sphere-layer"></div>
+                <div class="sphere-layer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FASE POLISH: Efectos Complejos -->
+      <section class="demo-section">
+        <h2>✨ FASE POLISH - Efectos Complejos y Optimización</h2>
+
+        <div class="polish-demos">
+          <div class="parallax-demo">
+            <h3>Parallax 3D</h3>
+            <div class="parallax-container">
+              <div class="parallax-layer parallax-back">
+                <div class="parallax-element">Fondo</div>
+              </div>
+              <div class="parallax-layer parallax-base">
+                <div class="parallax-element">Base</div>
+              </div>
+              <div class="parallax-layer parallax-front">
+                <div class="parallax-element">Frente</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="morphing-demo">
+            <h3>Morphing Shapes</h3>
+            <div class="morphing-container">
+              <div class="morphing-shape"></div>
+            </div>
+          </div>
+
+          <div class="carousel-3d-demo">
+            <h3>Carousel 3D</h3>
+            <div class="carousel-3d-container">
+              <div class="carousel-3d">
+                <div class="carousel-item item-1">1</div>
+                <div class="carousel-item item-2">2</div>
+                <div class="carousel-item item-3">3</div>
+                <div class="carousel-item item-4">4</div>
+                <div class="carousel-item item-5">5</div>
+                <div class="carousel-item item-6">6</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejercicio Práctico -->
+      <section class="demo-section exercise">
+        <h2>🎯 Ejercicio Práctico MVP</h2>
+
+        <div class="exercise-grid">
+          <div class="exercise-task">
+            <h3>CORE (18 min)</h3>
+            <div class="task-list">
+              <label><input type="checkbox" /> Hover effect con scale</label>
+              <label><input type="checkbox" /> Card flip básico</label>
+              <label><input type="checkbox" /> Rotate animation</label>
+              <label><input type="checkbox" /> Translate on hover</label>
+            </div>
+            <div
+              class="exercise-area"
+              id="core-exercise">
+              <!-- Área para implementar ejercicios CORE -->
+              <div class="exercise-box">Implementa aquí</div>
+            </div>
+          </div>
+
+          <div class="exercise-task">
+            <h3>ENHANCED (16 min)</h3>
+            <div class="task-list">
+              <label><input type="checkbox" /> Cubo 3D básico</label>
+              <label><input type="checkbox" /> Multiple transforms</label>
+              <label><input type="checkbox" /> Perspective effects</label>
+              <label><input type="checkbox" /> Transform-origin custom</label>
+            </div>
+            <div
+              class="exercise-area"
+              id="enhanced-exercise">
+              <!-- Área para implementar ejercicios ENHANCED -->
+              <div class="exercise-box">Implementa aquí</div>
+            </div>
+          </div>
+
+          <div class="exercise-task">
+            <h3>POLISH (11 min)</h3>
+            <div class="task-list">
+              <label><input type="checkbox" /> Scene 3D completa</label>
+              <label><input type="checkbox" /> Performance optimization</label>
+              <label><input type="checkbox" /> Responsive transforms</label>
+              <label><input type="checkbox" /> Smooth interactions</label>
+            </div>
+            <div
+              class="exercise-area"
+              id="polish-exercise">
+              <!-- Área para implementar ejercicios POLISH -->
+              <div class="exercise-box">Implementa aquí</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>WorldSkills 2025 - CSS Transforms Training</p>
+      <p>Tiempo restante: <span id="timer">45:00</span></p>
+    </footer>
+
+    <script src="../01-css-animations-keyframes/timer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Task Tracker Pro - Speed Test | WorldSkills 2025</title>
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+  </head>
+  <body>
+    <!-- Challenge Timer -->
+    <div
+      id="challengeTimer"
+      class="challenge-timer">
+      <div class="timer-content">
+        <h2>⏱️ WorldSkills Speed Challenge</h2>
+        <div class="timer-display">
+          <span
+            id="timeRemaining"
+            class="time-remaining">
+            45:00
+          </span>
+        </div>
+        <div class="timer-controls">
+          <button
+            id="startChallenge"
+            class="start-btn">
+            🚀 Iniciar Challenge
+          </button>
+          <button
+            id="pauseTimer"
+            class="pause-btn hidden">
+            ⏸️ Pausar
+          </button>
+          <button
+            id="resetTimer"
+            class="reset-btn">
+            🔄 Reset
+          </button>
+        </div>
+        <div class="phase-tracker">
+          <div class="phase-item">
+            <span class="phase-label">Core</span>
+            <span class="phase-time">0-20 min</span>
+          </div>
+          <div class="phase-item">
+            <span class="phase-label">Enhanced</span>
+            <span class="phase-time">20-35 min</span>
+          </div>
+          <div class="phase-item">
+            <span class="phase-label">Polish</span>
+            <span class="phase-time">35-45 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div
+      id="appContainer"
+      class="app-container hidden">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-content">
+          <h1>📋 Task Tracker Pro</h1>
+          <p>WorldSkills 2025 Speed Challenge</p>
+          <div class="header-controls">
+            <button
+              id="themeToggle"
+              class="theme-toggle">
+              🌙
+            </button>
+            <button
+              id="exportTasks"
+              class="export-btn">
+              📤 Export
+            </button>
+            <input
+              type="file"
+              id="importTasks"
+              accept=".json"
+              class="import-input hidden" />
+            <button
+              id="importBtn"
+              class="import-btn">
+              📥 Import
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Stats Dashboard -->
+      <section class="stats-dashboard">
+        <div class="stat-card">
+          <div
+            class="stat-number"
+            id="totalTasks">
+            0
+          </div>
+          <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-card">
+          <div
+            class="stat-number"
+            id="pendingTasks">
+            0
+          </div>
+          <div class="stat-label">Pendientes</div>
+        </div>
+        <div class="stat-card">
+          <div
+            class="stat-number"
+            id="completedTasks">
+            0
+          </div>
+          <div class="stat-label">Completadas</div>
+        </div>
+        <div class="stat-card progress-card">
+          <div class="progress-circle">
+            <svg
+              viewBox="0 0 36 36"
+              class="circular-chart">
+              <path
+                class="circle-bg"
+                d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path
+                id="progressPath"
+                class="circle"
+                stroke-dasharray="0, 100"
+                d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <text
+                x="18"
+                y="20.35"
+                class="percentage"
+                id="progressText">
+                0%
+              </text>
+            </svg>
+          </div>
+          <div class="stat-label">Progreso</div>
+        </div>
+      </section>
+
+      <!-- Task Form -->
+      <section class="task-form-section">
+        <form
+          id="taskForm"
+          class="task-form">
+          <div class="form-group">
+            <input
+              type="text"
+              id="taskInput"
+              placeholder="Agregar nueva tarea..."
+              class="task-input"
+              maxlength="100"
+              required />
+            <button
+              type="submit"
+              class="add-btn">
+              ➕ Agregar
+            </button>
+          </div>
+          <div class="form-controls">
+            <select
+              id="prioritySelect"
+              class="priority-select">
+              <option value="low">🟢 Baja</option>
+              <option
+                value="medium"
+                selected>
+                🟡 Media
+              </option>
+              <option value="high">🔴 Alta</option>
+            </select>
+            <input
+              type="date"
+              id="dueDateInput"
+              class="due-date-input" />
+          </div>
+        </form>
+      </section>
+
+      <!-- Filter and Search Controls -->
+      <section class="filter-section">
+        <div class="filter-controls">
+          <div class="filter-buttons">
+            <button
+              class="filter-btn active"
+              data-filter="all">
+              📋 Todas
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="pending">
+              ⏳ Pendientes
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="completed">
+              ✅ Completadas
+            </button>
+          </div>
+          <div class="search-controls">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="🔍 Buscar tareas..."
+              class="search-input" />
+            <select
+              id="sortSelect"
+              class="sort-select">
+              <option value="created">📅 Fecha creación</option>
+              <option value="priority">⚡ Prioridad</option>
+              <option value="title">🔤 Alfabético</option>
+              <option value="due">📆 Fecha límite</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks Container -->
+      <main class="tasks-container">
+        <div
+          id="tasksList"
+          class="tasks-list">
+          <!-- Tasks will be dynamically generated here -->
+        </div>
+
+        <!-- Empty State -->
+        <div
+          id="emptyState"
+          class="empty-state">
+          <div class="empty-icon">📋</div>
+          <h3>No hay tareas aún</h3>
+          <p>Agrega tu primera tarea para comenzar</p>
+          <button
+            class="empty-action-btn"
+            onclick="document.getElementById('taskInput').focus()">
+            ➕ Agregar Tarea
+          </button>
+        </div>
+      </main>
+
+      <!-- Task Edit Modal -->
+      <div
+        id="editModal"
+        class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>✏️ Editar Tarea</h3>
+            <button
+              id="closeModal"
+              class="close-btn">
+              ✖️
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editForm">
+              <input
+                type="hidden"
+                id="editTaskId" />
+              <div class="form-group">
+                <label for="editTaskTitle">Título de la tarea:</label>
+                <input
+                  type="text"
+                  id="editTaskTitle"
+                  class="form-input"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="editTaskPriority">Prioridad:</label>
+                <select
+                  id="editTaskPriority"
+                  class="form-select">
+                  <option value="low">🟢 Baja</option>
+                  <option value="medium">🟡 Media</option>
+                  <option value="high">🔴 Alta</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="editTaskDue">Fecha límite:</label>
+                <input
+                  type="date"
+                  id="editTaskDue"
+                  class="form-input" />
+              </div>
+              <div class="modal-actions">
+                <button
+                  type="button"
+                  id="cancelEdit"
+                  class="cancel-btn">
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  class="save-btn">
+                  💾 Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Overlay -->
+    <div
+      id="progressOverlay"
+      class="progress-overlay hidden">
+      <div class="progress-content">
+        <h3 id="progressTitle">Guardando datos...</h3>
+        <div class="progress-bar">
+          <div
+            id="progressFill"
+            class="progress-fill"></div>
+        </div>
+        <p id="progressMessage">Por favor espera...</p>
+      </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Help -->
+    <div
+      id="shortcutsHelp"
+      class="shortcuts-help hidden">
+      <div class="shortcuts-content">
+        <h3>⌨️ Keyboard Shortcuts</h3>
+        <div class="shortcuts-list">
+          <div class="shortcut-item">
+            <kbd>Ctrl + N</kbd>
+            <span>Nueva tarea</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>Ctrl + F</kbd>
+            <span>Buscar</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>Escape</kbd>
+            <span>Cerrar modal</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>Ctrl + E</kbd>
+            <span>Exportar</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>Ctrl + I</kbd>
+            <span>Importar</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>?</kbd>
+            <span>Mostrar ayuda</span>
+          </div>
+        </div>
+        <button
+          id="closeShortcuts"
+          class="close-shortcuts">
+          Cerrar
+        </button>
+      </div>
+    </div>
+
+    <!-- Development Console -->
+    <div
+      id="devConsole"
+      class="dev-console">
+      <h4>🛠️ Dev Console</h4>
+      <div class="console-stats">
+        <div class="console-item">
+          <span>Tasks Created:</span>
+          <span id="tasksCreated">0</span>
+        </div>
+        <div class="console-item">
+          <span>Phase:</span>
+          <span id="currentPhase">Not Started</span>
+        </div>
+        <div class="console-item">
+          <span>Time Left:</span>
+          <span id="timeLeft">45:00</span>
+        </div>
+        <div class="console-item">
+          <span>Features Done:</span>
+          <span id="featuresDone">0/12</span>
+        </div>
+      </div>
+      <div class="console-controls">
+        <button
+          id="toggleConsole"
+          class="toggle-console">
+          📊
+        </button>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script src="timer.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

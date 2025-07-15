@@ -1,0 +1,130 @@
+/* 🎯 Full-Stack Setup Styles */
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+}
+
+.App-header {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin: 1.5rem 0 1rem 0;
+  color: #e8f4f8;
+}
+
+/* 🔗 Connection Test Styles */
+.connection-test {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.loading {
+  color: #ffd700;
+  font-size: 1.2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.success {
+  color: #00ff88;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.success p:first-child {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.error p:first-child {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* 📋 Next Steps Styles */
+.next-steps {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.next-steps ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.next-steps li {
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.next-steps li:last-child {
+  border-bottom: none;
+}
+
+/* 🎨 Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .App-header {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .connection-test,
+  .next-steps {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+}

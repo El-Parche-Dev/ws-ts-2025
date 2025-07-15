@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>ES6 Syntax Esencial | WorldSkills 2025</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(45deg, #2c3e50, #3498db);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      .fase {
+        margin-bottom: 40px;
+        border-left: 5px solid #3498db;
+        padding-left: 20px;
+      }
+
+      .fase.core {
+        border-left-color: #27ae60;
+      }
+
+      .fase.enhanced {
+        border-left-color: #f39c12;
+      }
+
+      .fase.polish {
+        border-left-color: #e74c3c;
+      }
+
+      .fase h2 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+      }
+
+      .ejemplo {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border-left: 4px solid #007bff;
+      }
+
+      .ejemplo h3 {
+        color: #007bff;
+        margin-bottom: 15px;
+      }
+
+      .output {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        white-space: pre-wrap;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .ejercicio {
+        background: #e8f5e8;
+        border: 2px solid #28a745;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .ejercicio h3 {
+        color: #28a745;
+        margin-bottom: 15px;
+      }
+
+      .timer {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        z-index: 1000;
+      }
+
+      .productos-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .producto-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .producto-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .producto-card h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      .marca {
+        color: #7f8c8d;
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+
+      .precio {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #27ae60;
+        margin-bottom: 10px;
+      }
+
+      .estado {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      .estado.disponible {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      .estado.agotado {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .btn {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #0056b3;
+      }
+
+      .checklist {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .checklist h3 {
+        color: #495057;
+        margin-bottom: 15px;
+      }
+
+      .checklist label {
+        display: block;
+        margin: 10px 0;
+        cursor: pointer;
+      }
+
+      .checklist input[type='checkbox'] {
+        margin-right: 10px;
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="timer"
+      id="timer">
+      ⏱️ 30:00
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1>🚀 ES6 Syntax Esencial</h1>
+        <p>Dominando JavaScript moderno para WorldSkills 2025</p>
+      </div>
+
+      <div class="content">
+        <!-- FASE CORE -->
+        <div class="fase core">
+          <h2>🔧 FASE CORE - Destructuring y Spread (10 min)</h2>
+
+          <div class="ejemplo">
+            <h3>Destructuring de Objetos</h3>
+            <div
+              class="output"
+              id="destructuring-output"></div>
+          </div>
+
+          <div class="ejemplo">
+            <h3>Spread Operator</h3>
+            <div
+              class="output"
+              id="spread-output"></div>
+          </div>
+        </div>
+
+        <!-- FASE ENHANCED -->
+        <div class="fase enhanced">
+          <h2>
+            ⚡ FASE ENHANCED - Template Literals y Arrow Functions (15 min)
+          </h2>
+
+          <div class="ejemplo">
+            <h3>Template Literals</h3>
+            <div
+              class="output"
+              id="template-output"></div>
+          </div>
+
+          <div class="ejemplo">
+            <h3>Productos Dinámicos</h3>
+            <div
+              class="productos-container"
+              id="productos-container"></div>
+          </div>
+
+          <div class="ejemplo">
+            <h3>Arrow Functions</h3>
+            <div
+              class="output"
+              id="arrow-output"></div>
+          </div>
+        </div>
+
+        <!-- FASE POLISH -->
+        <div class="fase polish">
+          <h2>✨ FASE POLISH - Best Practices (5 min)</h2>
+
+          <div class="ejemplo">
+            <h3>const/let y Modern Patterns</h3>
+            <div
+              class="output"
+              id="modern-output"></div>
+          </div>
+        </div>
+
+        <!-- EJERCICIOS PRÁCTICOS -->
+        <div class="ejercicio">
+          <h3>🎯 Ejercicios Prácticos</h3>
+          <p>
+            Abre la consola del navegador (F12) y completa los ejercicios en
+            syntax.js
+          </p>
+          <button
+            class="btn"
+            onclick="ejecutarEjercicios()">
+            Ejecutar Ejercicios
+          </button>
+        </div>
+
+        <!-- CHECKLIST -->
+        <div class="checklist">
+          <h3>📝 Checklist de Validación</h3>
+
+          <h4>CORE (✅ Obligatorio)</h4>
+          <label
+            ><input
+              type="checkbox"
+              id="check-destructuring-obj" />
+            Destructuring de objetos funciona</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-destructuring-arr" />
+            Destructuring de arrays funciona</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-spread-arr" />
+            Spread operator con arrays funciona</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-spread-obj" />
+            Spread operator con objetos funciona</label
+          >
+
+          <h4>ENHANCED (⚡ Importante)</h4>
+          <label
+            ><input
+              type="checkbox"
+              id="check-template" />
+            Template literals con interpolación</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-arrow" />
+            Arrow functions básicas implementadas</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-array-methods" />
+            Array methods con arrow functions</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-html-gen" />
+            HTML generation con template literals</label
+          >
+
+          <h4>POLISH (✨ Opcional)</h4>
+          <label
+            ><input
+              type="checkbox"
+              id="check-const-let" />
+            const/let usado apropiadamente</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-best-practices" />
+            Best practices aplicadas</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-defaults" />
+            Destructuring con defaults</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="check-advanced-template" />
+            Template literals avanzados</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="syntax.js"></script>
+  </body>
+</html>
