@@ -94,11 +94,12 @@ Este es un **programa de entrenamiento intensivo WorldSkills 2025** diseñado pa
 ### **🏆 Reglas de Oro MVP para Copilot**
 
 1. **NUNCA** generar código que no sea inmediatamente funcional
-2. **SIEMPRE** priorizar funcionalidad sobre perfección visual
-3. **INCLUIR** comentarios explicando la fase MVP de cada sección
-4. **ESTRUCTURAR** el código para permitir iteración y mejora incremental
-5. **TIMEBOXING**: Estimar tiempo de desarrollo por fase
-6. **VALIDACIÓN**: Cada fase debe ser testeable independientemente
+2. **NUNCA** tratar los errores de testing como 'problemas menores', un problema es un problema y como tal se debe resolver. La calidad es total.
+3. **SIEMPRE** priorizar funcionalidad sobre perfección visual
+4. **INCLUIR** comentarios explicando la fase MVP de cada sección
+5. **ESTRUCTURAR** el código para permitir iteración y mejora incremental
+6. **TIMEBOXING**: Estimar tiempo de desarrollo por fase
+7. **VALIDACIÓN**: Cada fase debe ser testeable independientemente
 
 ### **📋 Estructura de Respuesta MVP**
 
