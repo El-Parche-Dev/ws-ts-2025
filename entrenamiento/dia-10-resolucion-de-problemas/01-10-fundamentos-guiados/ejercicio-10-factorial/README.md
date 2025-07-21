@@ -14,6 +14,41 @@ factorial(0); // → 1 (por definición)
 factorial(3); // → 6 (3 × 2 × 1)
 ```
 
+## 📋 ANÁLISIS PASO A PASO
+
+### **Paso 1: Comprensión del Problema**
+
+El factorial de n (n!) es el producto de todos los números enteros positivos desde 1 hasta n. Por definición, 0! = 1.
+
+### **Paso 2: Identificar Estrategia**
+
+- **Iterativo**: Multiplicar números desde 1 hasta n en un loop
+- **Recursivo**: n! = n × (n-1)! con caso base factorial(0) = 1
+- **Consideraciones**: Números negativos (error), números grandes (BigInt)
+
+### **Paso 3: Pseudocódigo**
+
+```text
+// Versión iterativa
+FUNCIÓN factorial(n)
+    SI n < 0 LANZAR Error
+    SI n === 0 O n === 1 RETORNAR 1
+
+    resultado = 1
+    PARA i DESDE 2 HASTA n
+        resultado *= i
+    FIN PARA
+    RETORNAR resultado
+FIN FUNCIÓN
+
+// Versión recursiva
+FUNCIÓN factorialRecursivo(n)
+    SI n < 0 LANZAR Error
+    SI n === 0 O n === 1 RETORNAR 1
+    RETORNAR n * factorialRecursivo(n - 1)
+FIN FUNCIÓN
+```
+
 ## 📋 IMPLEMENTACIÓN
 
 ### **Versión Iterativa**

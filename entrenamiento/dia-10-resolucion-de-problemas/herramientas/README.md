@@ -128,9 +128,11 @@ if (require.main === module) {
 module.exports = TestRunner;
 ```
 
-## ⚡ ANALIZADOR DE RENDIMIENTO
+## ⚡ ANALIZADOR DE PERFORMANCE
 
-### **performance-analyzer.js**
+### **PERFORMANCE ANALYZER - Análisis de Rendimiento**
+
+## ⚡ ANALIZADOR DE RENDIMIENTO
 
 ```javascript
 /**

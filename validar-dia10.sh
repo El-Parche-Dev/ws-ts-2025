@@ -182,7 +182,7 @@ practice_exercises=(
 for exercise in "${practice_exercises[@]}"; do
     if [ -d "$BASE_DIR/11-30-practica-supervisada/$exercise" ]; then
         check_file "$BASE_DIR/11-30-practica-supervisada/$exercise/README.md" "README del $exercise"
-        check_content "$BASE_DIR/11-30-practica-supervisada/$exercise/README.md" "Tiempo límite" "Timeboxing definido"
+        check_content "$BASE_DIR/11-30-practica-supervisada/$exercise/README.md" "Tiempo estimado" "Timeboxing definido"
     fi
 done
 

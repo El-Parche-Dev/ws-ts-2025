@@ -1,6 +1,6 @@
 # 🧩 Ejercicio 12: Filtrar Números Pares
 
-## ⏱️ **Tiempo límite: 8 minutos**
+## 🎯 FASE CORE ✅ (Tiempo estimado: 8 minutos)
 
 ### **Problema**
 

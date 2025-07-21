@@ -1,5 +1,22 @@
 # 🧠 Estrategias Generales de Resolución de Problemas
 
+## 🎯 METODOLOGÍA DE RESOLUCIÓN DE PROBLEMAS
+
+### **📋 Framework Sistemático WorldSkills**
+
+Esta metodología está diseñada específicamente para la **competencia WorldSkills 2025** donde la eficiencia y precisión bajo presión son críticas.
+
+#### **⏱️ Distribución de Tiempo por Ejercicio**
+
+```
+📊 ANÁLISIS DEL PROBLEMA (20% tiempo)
+🔧 DISEÑO DE SOLUCIÓN (30% tiempo)
+💻 IMPLEMENTACIÓN (40% tiempo)
+🧪 TESTING Y VALIDACIÓN (10% tiempo)
+```
+
+### **🔍 ANÁLISIS PASO A PASO**
+
 ## 🎯 Framework de Análisis Sistemático
 
 ### **📋 PASO 1: COMPRENSIÓN DEL PROBLEMA (2-3 minutos)**

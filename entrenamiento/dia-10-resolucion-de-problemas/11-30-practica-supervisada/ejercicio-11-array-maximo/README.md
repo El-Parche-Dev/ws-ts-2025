@@ -1,6 +1,6 @@
 # 🧩 Ejercicio 11: Encontrar el Máximo en Array
 
-## ⏱️ **Tiempo límite: 8 minutos**
+## 🎯 FASE CORE ✅ (Tiempo estimado: 8 minutos)
 
 ### **Problema**
 

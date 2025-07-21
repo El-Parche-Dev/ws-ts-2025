@@ -14,6 +14,35 @@ calcularPromedio([10, 20, 30]); // → 20
 calcularPromedio([7]); // → 7
 ```
 
+## 📋 ANÁLISIS PASO A PASO
+
+### **Paso 1: Comprensión del Problema**
+
+El promedio se calcula sumando todos los elementos y dividiendo entre la cantidad total. Es una operación matemática básica que combina suma y división.
+
+### **Paso 2: Identificar Estrategia**
+
+- Sumar todos los elementos del array
+- Dividir la suma total entre la cantidad de elementos
+- Manejar caso especial: array vacío (retornar 0 o undefined)
+
+### **Paso 3: Pseudocódigo**
+
+```text
+FUNCIÓN calcularPromedio(numeros)
+    SI numeros.length === 0
+        RETORNAR 0
+    FIN SI
+
+    suma = 0
+    PARA cada numero EN numeros
+        suma += numero
+    FIN PARA
+
+    RETORNAR suma / numeros.length
+FIN FUNCIÓN
+```
+
 ## 📋 IMPLEMENTACIÓN
 
 ### **Versión Básica**

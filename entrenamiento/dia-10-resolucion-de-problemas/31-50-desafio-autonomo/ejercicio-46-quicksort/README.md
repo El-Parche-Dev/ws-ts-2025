@@ -4,6 +4,10 @@
 
 ## 🎯 **Nivel: 🏆 Experto (WorldSkills level)**
 
+### **Nivel Avanzado WorldSkills**
+
+Este ejercicio representa el nivel **Avanzado** de la competencia WorldSkills 2025, donde debes implementar algoritmos de ordenamiento complejos con optimizaciones.
+
 ### **Problema**
 
 Implementa el algoritmo QuickSort para ordenar arrays de números.

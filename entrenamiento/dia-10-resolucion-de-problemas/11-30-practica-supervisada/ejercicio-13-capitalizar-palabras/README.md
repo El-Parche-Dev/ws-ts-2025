@@ -1,6 +1,6 @@
 # 🧩 Ejercicio 13: Capitalizar Primera Letra
 
-## ⏱️ **Tiempo límite: 9 minutos**
+## 🎯 FASE CORE ✅ (Tiempo estimado: 9 minutos)
 
 ### **Problema**
 

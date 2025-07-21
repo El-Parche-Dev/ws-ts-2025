@@ -4,6 +4,10 @@
 
 ## 🎯 **Nivel: ⭐⭐⭐⭐ Avanzado- (Recursión)**
 
+### **Orientación WorldSkills**
+
+Este ejercicio simula las condiciones de **WorldSkills Competition 2025** donde debes implementar algoritmos recursivos eficientes bajo presión de tiempo.
+
 ### **Problema**
 
 Implementa la secuencia de Fibonacci usando recursión.

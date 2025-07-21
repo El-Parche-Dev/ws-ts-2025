@@ -14,6 +14,32 @@ contarPalabras('  espacios   extra  '); // → 2
 contarPalabras('Una sola palabra'); // → 3
 ```
 
+## 📋 ANÁLISIS PASO A PASO
+
+### **Paso 1: Comprensión del Problema**
+
+Necesitamos contar cuántas palabras separadas por espacios hay en una cadena. Debemos manejar espacios múltiples y espacios al inicio/final.
+
+### **Paso 2: Identificar Estrategia**
+
+- Limpiar espacios extra al inicio y final (trim)
+- Dividir la cadena por espacios (split)
+- Manejar casos edge: cadena vacía, solo espacios
+
+### **Paso 3: Pseudocódigo**
+
+```text
+FUNCIÓN contarPalabras(texto)
+    SI texto.trim() === ''
+        RETORNAR 0
+    FIN SI
+
+    // Dividir por uno o más espacios
+    palabras = texto.trim().split(/\s+/)
+    RETORNAR palabras.length
+FIN FUNCIÓN
+```
+
 ## 📋 IMPLEMENTACIÓN
 
 ### **Versión Básica**

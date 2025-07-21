@@ -15,6 +15,45 @@ esPrimo(2); // → true
 generarPrimos(10); // → [2, 3, 5, 7]
 ```
 
+## 📋 ANÁLISIS PASO A PASO
+
+### **Paso 1: Comprensión del Problema**
+
+Un número primo es divisible solo por 1 y por sí mismo. Necesitamos verificar si un número es primo y generar todos los primos hasta un límite.
+
+### **Paso 2: Identificar Estrategia**
+
+- **Para verificar si es primo**: Probar divisibilidad desde 2 hasta √n
+- **Para generar lista**: Usar función esPrimo en loop o aplicar Criba de Eratóstenes
+- **Optimización**: Solo verificar números impares después del 2
+
+### **Paso 3: Pseudocódigo**
+
+```text
+FUNCIÓN esPrimo(numero)
+    SI numero < 2 RETORNAR false
+    SI numero === 2 RETORNAR true
+    SI numero % 2 === 0 RETORNAR false
+
+    PARA i DESDE 3 HASTA √numero (incremento 2)
+        SI numero % i === 0
+            RETORNAR false
+        FIN SI
+    FIN PARA
+    RETORNAR true
+FIN FUNCIÓN
+
+FUNCIÓN generarPrimos(limite)
+    primos = []
+    PARA i DESDE 2 HASTA limite
+        SI esPrimo(i)
+            primos.push(i)
+        FIN SI
+    FIN PARA
+    RETORNAR primos
+FIN FUNCIÓN
+```
+
 ## 📋 IMPLEMENTACIÓN
 
 ### **Función esPrimo Básica**

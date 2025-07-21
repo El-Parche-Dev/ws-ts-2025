@@ -4,6 +4,10 @@
 
 ## 🎯 **Nivel: 🏆 Experto (WorldSkills Final Challenge)**
 
+### **Nivel Avanzado WorldSkills Final**
+
+Este es el **Desafío Final Avanzado** de la competencia WorldSkills 2025. Representa el nivel máximo de complejidad y requiere la implementación de un sistema completo.
+
 ### **Problema**
 
 Implementa un sistema completo de gestión de tareas con las siguientes funcionalidades:

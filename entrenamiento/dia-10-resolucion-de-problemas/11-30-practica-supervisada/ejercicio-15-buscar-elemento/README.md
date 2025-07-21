@@ -1,6 +1,6 @@
 # 🧩 Ejercicio 15: Buscar en Array
 
-## ⏱️ **Tiempo límite: 10 minutos**
+## 🎯 FASE CORE ✅ (Tiempo estimado: 10 minutos)
 
 ### **Problema**
 

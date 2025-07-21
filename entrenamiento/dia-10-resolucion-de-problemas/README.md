@@ -35,6 +35,55 @@ Desarrollar **habilidades de resolución de problemas algorítmicos** con JavaSc
 - Git/GitHub workflow profesional
 - Code review y mejora continua
 
+## 🎯 METODOLOGÍA MVP - OBLIGATORIA EN TODO EL ENTRENAMIENTO
+
+### **IMPORTANTE: Enfoque MVP en Cada Ejercicio**
+
+**SIEMPRE** aplicar la metodología MVP (Minimum Viable Product) en tres fases:
+
+#### **🔧 FASE CORE (40% del tiempo) - LO ESENCIAL**
+
+- ✅ **Funcionalidad básica operativa sin errores**
+- ✅ **Estructura mínima pero correcta y semántica**
+- ✅ **Resultado inmediatamente evaluable y funcional**
+- ✅ **Sin dependencias complejas ni optimizaciones prematuras**
+
+#### **⚡ FASE ENHANCED (35% del tiempo) - FUNCIONALIDADES ADICIONALES**
+
+- ⚡ **Mejoras en experiencia del usuario**
+- ⚡ **Validaciones y manejo robusto de errores**
+- ⚡ **Funcionalidades secundarias importantes**
+- ⚡ **Interactividad y responsividad completa**
+
+#### **✨ FASE POLISH (25% del tiempo) - REFINAMIENTO**
+
+- ✨ **Optimizaciones de rendimiento**
+- ✨ **Mejoras visuales y microinteracciones**
+- ✨ **Funcionalidades avanzadas y testing**
+- ✨ **Documentación y accesibilidad completa**
+
+## 🎯 EJEMPLO DE METODOLOGÍA MVP
+
+Cada ejercicio sigue la metodología MVP con timeboxing específico:
+
+### **🔧 FASE CORE** (Tiempo estimado: 40% del tiempo total)
+
+- ✅ **Funcionalidad básica operativa sin errores**
+- ✅ **Estructura mínima pero correcta**
+- ✅ **Resultado inmediatamente evaluable**
+
+### **⚡ FASE ENHANCED** (Tiempo estimado: 35% del tiempo total)
+
+- ⚡ **Mejoras en experiencia del usuario**
+- ⚡ **Validaciones y manejo de errores**
+- ⚡ **Funcionalidades secundarias importantes**
+
+### **✨ FASE POLISH** (Tiempo estimado: 25% del tiempo total)
+
+- ✨ **Optimizaciones de rendimiento**
+- ✨ **Mejoras y microinteracciones**
+- ✨ **Funcionalidades avanzadas y testing**
+
 ## ⏱️ CRONOGRAMA DETALLADO (8 horas)
 
 ### **🌅 FASE I: Fundamentos (9:00-11:00) - 2 horas**
