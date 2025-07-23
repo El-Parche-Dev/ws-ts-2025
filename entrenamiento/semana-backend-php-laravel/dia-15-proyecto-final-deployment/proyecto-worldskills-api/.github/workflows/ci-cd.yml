@@ -1,0 +1,349 @@
+# 🚀 CI/CD Pipeline for WorldSkills Laravel API
+
+name: WorldSkills CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  PHP_VERSION: 8.2
+  NODE_VERSION: 18
+  DOCKER_REGISTRY: ghcr.io
+  IMAGE_NAME: worldskills-laravel-api
+
+jobs:
+  # ========== JOB 1: Code Quality & Security ==========
+  code-quality:
+    name: 🔍 Code Quality & Security Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, dom, fileinfo, pdo, pdo_sqlite, zip
+          coverage: pcov
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install PHP dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Run PHPStan (Static Analysis)
+        run: ./vendor/bin/phpstan analyse --memory-limit=2G
+
+      - name: Run PHP CS Fixer (Code Style)
+        run: ./vendor/bin/php-cs-fixer fix --dry-run --diff
+
+      - name: Security Audit (Composer)
+        run: composer audit
+
+  # ========== JOB 2: Automated Testing ==========
+  testing:
+    name: 🧪 Automated Testing Suite
+    runs-on: ubuntu-latest
+    needs: code-quality
+
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, dom, fileinfo, pdo, pdo_sqlite, zip, redis
+          coverage: pcov
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install PHP dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Create SQLite database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+
+      - name: Copy environment file
+        run: cp .env.testing .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Run database migrations
+        run: php artisan migrate --force
+
+      - name: Seed test data
+        run: php artisan db:seed --force
+
+      - name: Run Unit Tests
+        run: php artisan test --testsuite=Unit --coverage --min=80
+
+      - name: Run Feature Tests
+        run: php artisan test --testsuite=Feature --coverage --min=85
+
+      - name: Run API Tests
+        run: php artisan test --testsuite=API --coverage --min=90
+
+      - name: Generate Coverage Report
+        run: php artisan test --coverage-html coverage-report
+
+      - name: Upload Coverage Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage-report
+
+  # ========== JOB 3: Build Docker Images ==========
+  build:
+    name: 🐳 Build Docker Images
+    runs-on: ubuntu-latest
+    needs: testing
+
+    outputs:
+      image-digest: ${{ steps.build.outputs.digest }}
+      image-tag: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Docker image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile
+          target: production
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ========== JOB 4: Security Scanning ==========
+  security:
+    name: 🛡️ Security Vulnerability Scanning
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ needs.build.outputs.image-tag }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # ========== JOB 5: Deploy to Staging ==========
+  deploy-staging:
+    name: 🚀 Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [testing, build, security]
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+
+    steps:
+      - name: Deploy to staging server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            cd /var/www/staging
+            docker-compose pull
+            docker-compose up -d --remove-orphans
+            docker-compose exec -T app php artisan migrate --force
+            docker-compose exec -T app php artisan config:cache
+            docker-compose exec -T app php artisan route:cache
+            docker-compose exec -T app php artisan view:cache
+
+      - name: Run smoke tests
+        run: |
+          curl -f https://staging.worldskills-api.com/health || exit 1
+          curl -f https://staging.worldskills-api.com/api/v1/health || exit 1
+
+  # ========== JOB 6: Deploy to Production ==========
+  deploy-production:
+    name: 🎯 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [testing, build, security]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+
+    steps:
+      - name: Create deployment
+        uses: actions/github-script@v7
+        id: deployment
+        with:
+          script: |
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              environment: 'production',
+              required_contexts: []
+            });
+            return deployment.data.id;
+
+      - name: Deploy to production server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.PRODUCTION_HOST }}
+          username: ${{ secrets.PRODUCTION_USER }}
+          key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          script: |
+            cd /var/www/production
+
+            # Backup current deployment
+            docker-compose exec -T app php artisan backup:run
+
+            # Deploy new version
+            docker-compose pull
+            docker-compose up -d --remove-orphans
+
+            # Run migrations
+            docker-compose exec -T app php artisan migrate --force
+
+            # Clear and warm up caches
+            docker-compose exec -T app php artisan config:cache
+            docker-compose exec -T app php artisan route:cache
+            docker-compose exec -T app php artisan view:cache
+            docker-compose exec -T app php artisan optimize
+
+      - name: Run production smoke tests
+        run: |
+          curl -f https://api.worldskills2025.com/health || exit 1
+          curl -f https://api.worldskills2025.com/api/v1/health || exit 1
+
+      - name: Update deployment status (success)
+        uses: actions/github-script@v7
+        if: success()
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.result }},
+              state: 'success',
+              description: 'Deployment successful',
+              environment_url: 'https://api.worldskills2025.com'
+            });
+
+      - name: Update deployment status (failure)
+        uses: actions/github-script@v7
+        if: failure()
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.result }},
+              state: 'failure',
+              description: 'Deployment failed'
+            });
+
+  # ========== JOB 7: Performance Testing ==========
+  performance:
+    name: ⚡ Performance Testing
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/develop'
+
+    steps:
+      - name: Run K6 Performance Tests
+        uses: grafana/k6-action@v0.3.1
+        with:
+          filename: tests/performance/api-load-test.js
+        env:
+          BASE_URL: https://staging.worldskills-api.com
+
+      - name: Upload performance results
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-results
+          path: performance-results.json
+
+  # ========== JOB 8: Notification ==========
+  notify:
+    name: 📢 Notification
+    runs-on: ubuntu-latest
+    needs: [deploy-staging, deploy-production, performance]
+    if: always()
+
+    steps:
+      - name: Notify Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#worldskills-deployments'
+          text: |
+            🚀 WorldSkills API Deployment ${{ job.status }}
+
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Author: ${{ github.actor }}
+
+            🔗 View Details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
